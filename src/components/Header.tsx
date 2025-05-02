@@ -15,14 +15,14 @@ const Header: React.FC = () => {
       top: 0,
       left: 0,
       right: 0,
-      backgroundColor: 'white',
+      backgroundColor: 'transparent',
       zIndex: 1000
     }}>
       {/* Logo */}
       <div>
         <a href="/" aria-label="Home">
           {/* Replace with actual logo image or SVG */}
-          <img src="/FinLogo.png" alt="Fin Logo" style={{ height: '75px' }} />
+          <img src="/FinLogo-white.png" alt="Fin Logo" style={{ height: '75px' }} />
         </a>
       </div>
 
@@ -36,10 +36,10 @@ const Header: React.FC = () => {
           padding: 0,
           alignItems: 'center'
         }}>
-          <li><a href="/companies" className="nav-link" style={{ color: 'black', textDecoration: 'none', fontWeight: 'bold' }}>Companies</a></li>
-          <li><a href="/team" className="nav-link" style={{ color: 'black', textDecoration: 'none', fontWeight: 'bold' }}>Team</a></li>
-          <li><a href="/posts" className="nav-link" style={{ color: 'black', textDecoration: 'none', fontWeight: 'bold' }}>News & Insights</a></li>
-          <li><a href="/explore" className="nav-link" style={{ color: 'black', textDecoration: 'none', fontWeight: 'bold' }}>Explore</a></li>
+          <li><a href="/companies" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold' }}>Companies</a></li>
+          <li><a href="/team" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold' }}>Team</a></li>
+          <li><a href="/posts" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold' }}>News & Insights</a></li>
+          <li><a href="/explore" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold' }}>Explore</a></li>
         </ul>
       </nav>
 
@@ -56,7 +56,7 @@ const Header: React.FC = () => {
           height: 2px;
           bottom: -2px;
           left: 0;
-          background-color: black;
+          background-color: white;
           transition: width 0.3s ease-in-out;
         }
         

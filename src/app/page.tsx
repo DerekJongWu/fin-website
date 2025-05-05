@@ -8,12 +8,12 @@ export default function HomePage() {
   return (
     <>
       <Header />
-      <main className="relative h-screen">
+      <main className="relative h-screen w-full">
         <img 
-          src="/HomePage-1.jpeg" 
+          src="/HomePage-1.jpg" 
           alt="Hero image"
           className="w-full h-full object-cover"
-          style={{ objectPosition: '100% center' }}
+          style={{ objectPosition: '100% center', width: '100vw' }}
         />
         <div className="absolute top-1/2 left-[15%] transform -translate-y-1/2">
           <h1 className="text-[clamp(3.5rem,6vw,4.5rem)] leading-tight font-bold" style={{ color: '#FFFFFF' }}>

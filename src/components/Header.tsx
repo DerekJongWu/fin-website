@@ -36,10 +36,10 @@ const Header: React.FC = () => {
           padding: 0,
           alignItems: 'center'
         }}>
-          <li><a href="/companies" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold' }}>Companies</a></li>
-          <li><a href="/team" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold' }}>Team</a></li>
-          <li><a href="/posts" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold' }}>News & Insights</a></li>
-          <li><a href="/explore" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold' }}>Explore</a></li>
+          <li><a href="/about" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}>About</a></li>
+          <li><a href="/team" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}>Team</a></li>
+          <li><a href="/portfolio" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}>Portfolio</a></li>
+          <li><a href="/posts" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}>News & Insights</a></li>
         </ul>
       </nav>
 

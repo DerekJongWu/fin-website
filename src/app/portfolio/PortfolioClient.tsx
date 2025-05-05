@@ -191,7 +191,7 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
               width: "100%",
               maxWidth: 370,
               aspectRatio: "4 / 3",
-              background: "transparent",
+              background: "rgba(255, 255, 255, 0.25)",
               borderRadius: 24,
               boxShadow: "0 2px 16px 0 rgba(0,0,0,0.10)",
               display: "flex",
@@ -239,6 +239,8 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
                   objectFit: "contain",
                   display: "block",
                   background: "transparent",
+                  mixBlendMode: "multiply",
+                  filter: "brightness(0) invert(1)",
                 }}
               />
             </div>

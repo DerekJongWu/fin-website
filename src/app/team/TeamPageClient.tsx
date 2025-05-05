@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useMemo } from 'react';
-import Header from '@/components/Header';
+import PortfolioHeader from '@/components/PortfolioHeader';
 import Footer from '@/components/Footer';
 import { urlFor } from './page';
 
@@ -33,12 +33,12 @@ export default function TeamPageClient({ team }: { team: any[] }) {
 
   return (
     <div style={{ background: '#1E2332', minHeight: '100vh', width: '100vw' }}>
-      <Header />
+      <PortfolioHeader />
       <main
         style={{
           maxWidth: 1400,
           margin: '0 auto',
-          padding: '120px 24px 48px 24px',
+          padding: '50px 24px 48px 24px',
           minHeight: '80vh',
         }}
       >

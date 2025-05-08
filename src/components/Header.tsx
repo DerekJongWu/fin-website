@@ -21,7 +21,7 @@ const Header: React.FC = () => {
       {/* Logo */}
       <div style={{ display: 'flex', alignItems: 'center', height: '75px' }}>
         <a href="/" aria-label="Home" style={{ display: 'flex', alignItems: 'center', height: '100%', paddingTop: '0.5rem' }}>
-          <img src="/FinLogo-white.png" alt="Fin Logo" style={{ height: '50px', display: 'block' }} />
+          <img src="/FinLogo-Dark.png" alt="Fin Logo" style={{ height: '50px', display: 'block' }} />
         </a>
       </div>
 
@@ -35,10 +35,10 @@ const Header: React.FC = () => {
           padding: 0,
           alignItems: 'center'
         }}>
-          <li><a href="/about" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}>About</a></li>
-          <li><a href="/team" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}>Team</a></li>
-          <li><a href="/portfolio" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}>Portfolio</a></li>
-          <li><a href="/posts" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}>News & Insights</a></li>
+          <li><a href="/about" className="nav-link" style={{ color: '#1E2332', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}>About</a></li>
+          <li><a href="/team" className="nav-link" style={{ color: '#1E2332', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}>Team</a></li>
+          <li><a href="/portfolio" className="nav-link" style={{ color: '#1E2332', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}>Portfolio</a></li>
+          <li><a href="/posts" className="nav-link" style={{ color: '#1E2332', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}>News & Insights</a></li>
         </ul>
       </nav>
 

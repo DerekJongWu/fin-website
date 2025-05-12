@@ -13,7 +13,8 @@ const PortfolioHeader: React.FC = () => {
       position: 'relative',
       backgroundColor: 'transparent',
       zIndex: 1000,
-      width: '100%'
+      width: '100%',
+      fontFamily: 'var(--font-inter)'
     }}>
       {/* Logo */}
       <div style={{ display: 'flex', alignItems: 'center', height: '75px' }}>
@@ -30,12 +31,13 @@ const PortfolioHeader: React.FC = () => {
           gap: '1.5rem', 
           margin: 0, 
           padding: 0,
-          alignItems: 'center'
+          alignItems: 'center',
+          fontFamily: 'var(--font-inter)'
         }}>
-          <li><a href="/about" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}>About</a></li>
-          <li><a href="/team" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}>Team</a></li>
-          <li><a href="/portfolio" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}>Portfolio</a></li>
-          <li><a href="/posts" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}>News & Insights</a></li>
+          <li><a href="/about" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>About</a></li>
+          <li><a href="/team" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Team</a></li>
+          <li><a href="/portfolio" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Portfolio</a></li>
+          <li><a href="/posts" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>News & Insights</a></li>
         </ul>
       </nav>
 

@@ -32,7 +32,7 @@ export default function TeamPageClient({ team }: { team: any[] }) {
   }, [team, activeTag]);
 
   return (
-    <div style={{ background: '#1E2332', minHeight: '100vh', width: '100vw' }}>
+    <div style={{ background: '#1E2332', minHeight: '100vh', width: '100vw', fontFamily: 'var(--font-inter)' }}>
       <PortfolioHeader />
       <main
         style={{
@@ -40,6 +40,7 @@ export default function TeamPageClient({ team }: { team: any[] }) {
           margin: '0 auto',
           padding: '50px 24px 48px 24px',
           minHeight: '80vh',
+          fontFamily: 'var(--font-inter)'
         }}
       >
         {/* Filter Bar */}
@@ -61,13 +62,14 @@ export default function TeamPageClient({ team }: { team: any[] }) {
                 boxShadow: activeTag === tag ? '0 2px 8px 0 rgba(255,215,0,0.10)' : '0 1px 4px 0 rgba(0,0,0,0.07)',
                 outline: 'none',
                 transition: 'border 0.2s, background 0.2s',
+                fontFamily: 'var(--font-inter)'
               }}
             >
               {tag}
             </button>
           ))}
         </div>
-        <h1 style={{ color: 'white', fontSize: '2.5rem', fontWeight: 700, marginBottom: 40 }}>Our Team</h1>
+        <h1 style={{ color: 'white', fontSize: '2.5rem', fontWeight: 700, marginBottom: 40, fontFamily: 'var(--font-inter)' }}>Our Team</h1>
         <div
           style={{
             display: 'grid',
@@ -86,6 +88,7 @@ export default function TeamPageClient({ team }: { team: any[] }) {
                 width: '100%',
                 cursor: 'pointer',
                 transition: 'transform 0.18s cubic-bezier(.4,1.2,.6,1)',
+                fontFamily: 'var(--font-inter)'
               }}
               onClick={() => setSelected(member)}
               onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
@@ -95,7 +98,7 @@ export default function TeamPageClient({ team }: { team: any[] }) {
                 style={{
                   width: '100%',
                   maxWidth: 370,
-                  height: 440,
+                  height: 340,
                   background: 'rgba(255,255,255,0.03)',
                   borderRadius: 24,
                   boxShadow: '0 2px 16px 0 rgba(0,0,0,0.10)',
@@ -113,13 +116,14 @@ export default function TeamPageClient({ team }: { team: any[] }) {
                       width: '100%',
                       height: '100%',
                       objectFit: 'cover',
+                      objectPosition: 'center 10%',
                       display: 'block',
                     }}
                   />
                 )}
               </div>
-              <h2 style={{ color: 'white', fontSize: '1.3rem', fontWeight: 600, margin: '18px 0 0 0', textAlign: 'center' }}>{member.name}</h2>
-              <p style={{ color: '#B0B3C7', fontSize: '1.05rem', marginTop: 4, textAlign: 'center' }}>{member.title}</p>
+              <h2 style={{ color: 'white', fontSize: '1.3rem', fontWeight: 600, margin: '18px 0 0 0', textAlign: 'center', fontFamily: 'var(--font-inter)' }}>{member.name}</h2>
+              <p style={{ color: '#B0B3C7', fontSize: '1.05rem', marginTop: 4, textAlign: 'center', fontFamily: 'var(--font-inter)' }}>{member.title}</p>
             </div>
           ))}
         </div>
@@ -142,6 +146,7 @@ export default function TeamPageClient({ team }: { team: any[] }) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            fontFamily: 'var(--font-inter)'
           }}
         >
           <div
@@ -157,6 +162,7 @@ export default function TeamPageClient({ team }: { team: any[] }) {
               display: 'flex',
               overflow: 'hidden',
               position: 'relative',
+              fontFamily: 'var(--font-inter)'
             }}
           >
             {/* Left: Image */}
@@ -226,6 +232,7 @@ export default function TeamPageClient({ team }: { team: any[] }) {
                         fontSize: '1.08rem',
                         letterSpacing: 0.5,
                         boxShadow: '0 1px 4px 0 rgba(0,0,0,0.07)',
+                        fontFamily: 'var(--font-inter)'
                       }}>{focus}</span>
                     ))
                   : selected.focus ? (
@@ -242,15 +249,16 @@ export default function TeamPageClient({ team }: { team: any[] }) {
                         fontSize: '1.08rem',
                         letterSpacing: 0.5,
                         boxShadow: '0 1px 4px 0 rgba(0,0,0,0.07)',
+                        fontFamily: 'var(--font-inter)'
                       }}>{selected.focus}</span>
                     ) : null}
               </div>
             </div>
             {/* Right: Bio */}
-            <div style={{ flex: 1, padding: '2.5rem 2rem', overflowY: 'auto', color: 'white', height: '100%', minWidth: 0 }}>
-              <h2 style={{ fontSize: '2rem', fontWeight: 700, margin: 0 }}>{selected.name}</h2>
-              <p style={{ color: '#B0B3C7', fontSize: '1.1rem', margin: '8px 0 24px 0' }}>{selected.title}</p>
-              <div style={{ fontSize: '1.08rem', lineHeight: 1.7, whiteSpace: 'pre-line' }}>{selected.bio}</div>
+            <div style={{ flex: 1, padding: '2.5rem 2rem', overflowY: 'auto', color: 'white', height: '100%', minWidth: 0, fontFamily: 'var(--font-inter)' }}>
+              <h2 style={{ fontSize: '2rem', fontWeight: 700, margin: 0, fontFamily: 'var(--font-inter)' }}>{selected.name}</h2>
+              <p style={{ color: '#B0B3C7', fontSize: '1.1rem', margin: '8px 0 24px 0', fontFamily: 'var(--font-inter)' }}>{selected.title}</p>
+              <div style={{ fontSize: '1.08rem', lineHeight: 1.7, whiteSpace: 'pre-line', fontFamily: 'var(--font-inter)' }}>{selected.bio}</div>
             </div>
             {/* Close button */}
             <button
@@ -272,6 +280,7 @@ export default function TeamPageClient({ team }: { team: any[] }) {
                 alignItems: 'center',
                 justifyContent: 'center',
                 zIndex: 10,
+                fontFamily: 'var(--font-inter)'
               }}
             >
               ×

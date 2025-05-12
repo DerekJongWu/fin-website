@@ -9,7 +9,8 @@ const Footer: React.FC = () => {
       color: 'white',
       padding: '1.5rem 2rem',
       width: '100%',
-      marginTop: 'auto'
+      marginTop: 'auto',
+      fontFamily: 'var(--font-inter)'
     }}>
       <div style={{
         maxWidth: '1200px',
@@ -23,14 +24,15 @@ const Footer: React.FC = () => {
           <h3 style={{ 
             fontSize: '1rem', 
             marginBottom: '0.25rem',
-            fontWeight: 'bold'
+            fontWeight: '600'
           }}>
             Contact Us
           </h3>
           <address style={{
             fontStyle: 'normal',
             lineHeight: '1.3',
-            fontSize: '0.85rem'
+            fontSize: '0.85rem',
+            fontWeight: '400'
           }}>
             123 Business Street<br />
             Suite 100<br />
@@ -45,7 +47,8 @@ const Footer: React.FC = () => {
           paddingTop: '0.75rem',
           textAlign: 'center',
           fontSize: '0.8rem',
-          color: 'rgba(255, 255, 255, 0.7)'
+          color: 'rgba(255, 255, 255, 0.7)',
+          fontWeight: '400'
         }}>
           © {new Date().getFullYear()} Fin. All rights reserved.
         </div>

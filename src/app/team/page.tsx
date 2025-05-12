@@ -14,6 +14,11 @@ export const urlFor = (source: SanityImageSource) =>
     : null;
 
 export default async function TeamPage() {
-  const team = await client.fetch<any[]>(TEAM_QUERY);
-  return <TeamPageClient team={team} />;
+  const team = await client.fetch(TEAM_QUERY);
+
+  return (
+    <div style={{ fontFamily: 'var(--font-inter)' }}>
+      <TeamPageClient team={team} />
+    </div>
+  );
 }

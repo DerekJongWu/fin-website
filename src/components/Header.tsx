@@ -16,7 +16,8 @@ const Header: React.FC = () => {
       left: 0,
       right: 0,
       backgroundColor: 'transparent',
-      zIndex: 1000
+      zIndex: 1000,
+      fontFamily: 'var(--font-inter)'
     }}>
       {/* Logo */}
       <div style={{ display: 'flex', alignItems: 'center', height: '75px' }}>
@@ -33,12 +34,13 @@ const Header: React.FC = () => {
           gap: '1.5rem', 
           margin: 0, 
           padding: 0,
-          alignItems: 'center'
+          alignItems: 'center',
+          fontFamily: 'var(--font-inter)'
         }}>
-          <li><a href="/about" className="nav-link" style={{ color: '#1E2332', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}>About</a></li>
-          <li><a href="/team" className="nav-link" style={{ color: '#1E2332', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}>Team</a></li>
-          <li><a href="/portfolio" className="nav-link" style={{ color: '#1E2332', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}>Portfolio</a></li>
-          <li><a href="/posts" className="nav-link" style={{ color: '#1E2332', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}>News & Insights</a></li>
+          <li><a href="/about" className="nav-link" style={{ color: '#1E2332', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>About</a></li>
+          <li><a href="/team" className="nav-link" style={{ color: '#1E2332', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Team</a></li>
+          <li><a href="/portfolio" className="nav-link" style={{ color: '#1E2332', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Portfolio</a></li>
+          <li><a href="/posts" className="nav-link" style={{ color: '#1E2332', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>News & Insights</a></li>
         </ul>
       </nav>
 
@@ -55,7 +57,7 @@ const Header: React.FC = () => {
           height: 2px;
           bottom: -2px;
           left: 0;
-          background-color: white;
+          background-color: #1E2332;
           transition: width 0.3s ease-in-out;
         }
         

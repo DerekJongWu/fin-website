@@ -19,24 +19,24 @@ export default function ImageSlider() {
   const duplicatedImages = [...images, ...images];
 
   return (
-    <div className="relative w-full overflow-hidden py-8 mt-[40vh]">
+    <div className="relative w-full overflow-hidden py-8 mt-[45vh]">
       <div className="flex">
         {/* First set of images */}
         <div className="flex animate-scroll">
           {duplicatedImages.map((src, index) => (
             <div key={`first-${src}-${index}`} className="flex">
-              <div className="w-[200px] h-[100px]">
+              <div className="w-[120px] h-[60px]">
                 <Image
                   src={src}
                   alt={`Logo ${index + 1}`}
-                  width={200}
-                  height={100}
+                  width={120}
+                  height={60}
                   className="object-contain w-full h-full"
                   priority={true}
                   loading="eager"
                 />
               </div>
-              <div className="w-[100px]" />
+              <div className="w-[60px]" />
             </div>
           ))}
         </div>
@@ -44,18 +44,18 @@ export default function ImageSlider() {
         <div className="flex animate-scroll">
           {duplicatedImages.map((src, index) => (
             <div key={`second-${src}-${index}`} className="flex">
-              <div className="w-[200px] h-[100px]">
+              <div className="w-[120px] h-[60px]">
                 <Image
                   src={src}
                   alt={`Logo ${index + 1}`}
-                  width={200}
-                  height={100}
+                  width={120}
+                  height={60}
                   className="object-contain w-full h-full"
                   priority={true}
                   loading="eager"
                 />
               </div>
-              <div className="w-[100px]" />
+              <div className="w-[60px]" />
             </div>
           ))}
         </div>
@@ -70,7 +70,7 @@ export default function ImageSlider() {
           }
         }
         .animate-scroll {
-          animation: scroll 45s linear infinite;
+          animation: scroll 150s linear infinite;
         }
       `}</style>
     </div>

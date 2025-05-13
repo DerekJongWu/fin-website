@@ -1,36 +1,72 @@
 'use client';
 
-import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ImageSlider from "@/components/ImageSlider";
 import { useEffect, useState } from "react";
 
 export default function HomePage() {
   const [isVisible, setIsVisible] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
-    setIsVisible(true);
+    // Start image zoom animation
+    setImageLoaded(true);
+    // Start text animation after image zoom
+    setTimeout(() => {
+      setIsVisible(true);
+    }, 1000);
   }, []);
 
   return (
     <div style={{ fontFamily: 'var(--font-inter)' }}>
       <Header />
-      <main className="relative min-h-screen w-full" style={{ backgroundColor: '#E1E2E5', fontFamily: 'var(--font-inter)' }}>
-        <div className="absolute top-[25vh] left-[15%] text-left">
-          <h1 className="text-[clamp(3.5rem,6vw,4.5rem)] leading-tight font-bold" style={{ color: '#1E2332', fontFamily: 'var(--font-inter)' }}>
-            <span className={`block transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              Built by operators
-            </span>
-            <span className={`block transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              for operators
-            </span>
-          </h1>
-        </div>
-        <div className="absolute top-[35vh] left-1/2 transform -translate-x-1/2 w-full">
-          <ImageSlider />
-        </div>
-      </main>
+      <div className="relative overflow-hidden">
+        <main
+          className="relative w-full flex flex-col"
+          style={{
+            backgroundImage: 'url(/test.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: '100% center',
+            backgroundRepeat: 'no-repeat',
+            height: '100vh',
+            minHeight: '100vh',
+            transform: `scale(${imageLoaded ? 1.1 : 1})`,
+            transition: 'transform 1s ease-out',
+            transformOrigin: 'center center',
+          }}
+        >
+          <div
+            className="flex flex-col justify-center relative z-10"
+            style={{
+              height: '100vh',
+              paddingLeft: '10vw',
+              paddingTop: '15vh',
+              paddingBottom: '15vh',
+            }}
+          >
+            <h1
+              className="landing-title text-[clamp(3rem,7vw,5rem)] leading-tight font-bold"
+              style={{ maxWidth: '900px', textShadow: '0 2px 16px rgba(0,0,0,0.25)', color: '#fff' }}
+            >
+              <span
+                className={`block transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} landing-title-span`}
+              >
+                Built by operators
+              </span>
+              <span
+                className={`block transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} landing-title-span`}
+              >
+                for operators
+              </span>
+            </h1>
+            <style jsx>{`
+              .landing-title, .landing-title-span {
+                color: #fff !important;
+              }
+            `}</style>
+          </div>
+        </main>
+      </div>
       <Footer />
     </div>
   );

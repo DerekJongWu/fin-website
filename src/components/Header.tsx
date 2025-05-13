@@ -22,7 +22,7 @@ const Header: React.FC = () => {
       {/* Logo */}
       <div style={{ display: 'flex', alignItems: 'center', height: '75px' }}>
         <a href="/" aria-label="Home" style={{ display: 'flex', alignItems: 'center', height: '100%', paddingTop: '0.5rem' }}>
-          <img src="/FinLogo-Dark.png" alt="Fin Logo" style={{ height: '50px', display: 'block' }} />
+          <img src="/FinLogo-white.png" alt="Fin Logo" style={{ height: '50px', display: 'block' }} />
         </a>
       </div>
 
@@ -37,10 +37,10 @@ const Header: React.FC = () => {
           alignItems: 'center',
           fontFamily: 'var(--font-inter)'
         }}>
-          <li><a href="/about" className="nav-link" style={{ color: '#1E2332', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>About</a></li>
-          <li><a href="/team" className="nav-link" style={{ color: '#1E2332', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Team</a></li>
-          <li><a href="/portfolio" className="nav-link" style={{ color: '#1E2332', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Portfolio</a></li>
-          <li><a href="/posts" className="nav-link" style={{ color: '#1E2332', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>News & Insights</a></li>
+          <li><a href="/about" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>About</a></li>
+          <li><a href="/team" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Team</a></li>
+          <li><a href="/portfolio" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Portfolio</a></li>
+          <li><a href="/posts" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>News & Insights</a></li>
         </ul>
       </nav>
 
@@ -57,7 +57,7 @@ const Header: React.FC = () => {
           height: 2px;
           bottom: -2px;
           left: 0;
-          background-color: #1E2332;
+          background-color: #fff;
           transition: width 0.3s ease-in-out;
         }
         

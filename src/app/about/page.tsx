@@ -591,7 +591,7 @@ export default function AboutPage() {
                 textAlign: 'left',
                 marginTop: 0
               }}>
-                Our Operating Edge
+                How we add value
               </h2>
               <div style={{ color: '#B0B3C7', fontSize: '1.25rem', lineHeight: 1.6 }}>
                 Our Platform team specializes in solving your most pressing challenges. We are passionate about rolling up our sleeves and partnering with founders that have deep financial services experience, audacious goals, differentiated products, and a global mindset.

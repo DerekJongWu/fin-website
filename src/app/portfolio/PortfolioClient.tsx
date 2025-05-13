@@ -94,7 +94,7 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
         }}>
           {/* Thesis */}
           <div style={{ minWidth: 220 }}>
-            <div style={{ color: '#FFD700', fontWeight: 600, marginBottom: 10, fontFamily: 'var(--font-inter)' }}>Thesis</div>
+            <div style={{ color: '#FFD700', fontWeight: 600, marginBottom: 10, fontFamily: 'var(--font-inter)' }}>Sub-sector</div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }}>
               {/* Add marginLeft to the second column */}
               <style>{`
@@ -290,7 +290,7 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
                 return (
                   <span style={{ display: 'block', width: '100%', textAlign: 'left', fontFamily: 'var(--font-inter)' }}>
                     <div style={{ fontWeight: 700, fontSize: '1.08rem', marginBottom: 4 }}>
-                      Thesis:
+                      Sub-sector:
                     </div>
                     <div style={{ fontSize: '0.75rem', fontWeight: 400, marginBottom: 18, color: '#1E2332', opacity: 0.85 }}>
                       {company.thesis || 'No thesis available.'}

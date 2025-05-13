@@ -26,7 +26,7 @@ export default function HomePage() {
           style={{
             backgroundImage: 'url(/test.jpg)',
             backgroundSize: 'cover',
-            backgroundPosition: '100% center',
+            backgroundPosition: '10% center',
             backgroundRepeat: 'no-repeat',
             height: '100vh',
             minHeight: '100vh',

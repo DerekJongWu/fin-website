@@ -67,53 +67,106 @@ export default function PostsPageClient({ posts }: { posts: any[] }) {
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(4, 1fr)',
-                gridAutoRows: '200px',
+                gridAutoRows: '180px',
                 gap: '24px',
                 gridAutoFlow: 'dense',
               }}
             >
-              {(() => {
-                // Find the first GTM Navigator article
-                const bigIdx = featuredPosts.findIndex(post => post.postType === "GTM Navigator");
-                return featuredPosts.map((post, idx) => {
-                  let gridColumn = 'span 1';
-                  let gridRow = 'span 1';
-                  if ((bigIdx !== -1 && idx === bigIdx) || (bigIdx === -1 && idx === 0)) {
-                    gridColumn = 'span 2';
-                    gridRow = 'span 2';
-                  }
-                  return (
-                    <div
-                      key={post._id}
+              {featuredPosts.map((post, idx) => {
+                // Dynamic quilt pattern: cycle through a pattern of spans
+                // Pattern: [2x2, 2x1, 1x2, 1x1, 1x1, ...]
+                const quiltPattern = [
+                  { gridColumn: 'span 2', gridRow: 'span 2' },
+                  { gridColumn: 'span 2', gridRow: 'span 1' },
+                  { gridColumn: 'span 1', gridRow: 'span 2' },
+                  { gridColumn: 'span 1', gridRow: 'span 1' },
+                  { gridColumn: 'span 1', gridRow: 'span 1' },
+                ];
+                const pattern = quiltPattern[idx % quiltPattern.length];
+                const gridColumn = pattern.gridColumn;
+                const gridRow = pattern.gridRow;
+                return (
+                  <div
+                    key={post._id}
+                    style={{
+                      background: getCardBg(post.postType),
+                      borderRadius: 16,
+                      padding: '24px',
+                      border: '1px solid rgba(255,255,255,0.1)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'flex-end',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      gridColumn,
+                      gridRow,
+                      minHeight: 0,
+                      minWidth: 0,
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-8px) scale(1.03)';
+                      e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.18)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }}
+                  >
+                    {/* Top right: Badge */}
+                    <span style={{
+                      position: 'absolute',
+                      top: 16,
+                      right: 20,
+                      background: 'rgba(255,255,255,0.85)',
+                      color: '#23263a',
+                      borderRadius: 8,
+                      padding: '2px 12px',
+                      fontSize: '0.95rem',
+                      fontWeight: 500,
+                      zIndex: 2,
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
+                    }}>{post.postType}</span>
+                    {/* Center: Optional logo or icon could go here */}
+                    <Link
+                      href={post.newslink || `/posts/${post.slug.current}`}
                       style={{
-                        gridColumn,
-                        gridRow,
-                        background: getCardBg(post.postType),
-                        borderRadius: 16,
-                        padding: '24px',
-                        border: '1px solid rgba(255,255,255,0.1)',
-                        transition: 'transform 0.2s ease-in-out',
-                        cursor: 'pointer',
-                        minWidth: 0,
-                        minHeight: 0,
+                        textDecoration: 'none',
+                        width: '100%',
+                        height: '100%',
                         display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'flex-end',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flex: 1,
+                        position: 'relative',
                       }}
+                      target={post.newslink ? "_blank" : undefined}
+                      rel={post.newslink ? "noopener noreferrer" : undefined}
                     >
-                      <Link
-                        href={post.newslink || `/posts/${post.slug.current}`}
-                        style={{ textDecoration: 'none' }}
-                        target={post.newslink ? "_blank" : undefined}
-                        rel={post.newslink ? "noopener noreferrer" : undefined}
-                      >
-                        <h2 style={{ color: '#1E2332', fontSize: '1.3rem', fontWeight: 600, marginBottom: 8, fontFamily: 'var(--font-inter)' }}>{post.title}</h2>
-                        <p style={{ color: '#1E2332', fontSize: '1.05rem', fontFamily: 'var(--font-inter)' }}>{new Date(post.publishedAt).toLocaleDateString()}</p>
-                      </Link>
-                    </div>
-                  );
-                });
-              })()}
+                      {/* Bottom: Title */}
+                      <span style={{
+                        position: 'absolute',
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: 'rgba(30,35,50,0.75)',
+                        color: 'white',
+                        fontWeight: 700,
+                        fontSize: '1.1rem',
+                        padding: '16px 20px 12px 20px',
+                        borderBottomLeftRadius: 16,
+                        borderBottomRightRadius: 16,
+                        textShadow: '0 2px 8px rgba(0,0,0,0.18)',
+                        zIndex: 3,
+                        display: 'block',
+                        textAlign: 'left',
+                        letterSpacing: '-0.01em',
+                      }}>{post.title}</span>
+                    </Link>
+                  </div>
+                );
+              })}
             </div>
           </section>
         )}

@@ -40,6 +40,7 @@ const Header: React.FC = () => {
           <li><a href="/about" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>About</a></li>
           <li><a href="/team" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Team</a></li>
           <li><a href="/portfolio" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Portfolio</a></li>
+          <li><a href="/career" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Career</a></li>
           <li><a href="/posts" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>News & Insights</a></li>
         </ul>
       </nav>

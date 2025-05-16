@@ -13,7 +13,7 @@ const FILTERS = [
 
 function getCardBg(postType: string) {
   if (postType === "GTM Navigator") return "#E1E2E5";
-  if (postType === "Fin News") return "#93E9BE";
+  if (postType === "Fin News") return "#00539B";
   if (postType === "Investment Announcement") return "#FFD700";
   return "rgba(255,255,255,0.03)";
 }

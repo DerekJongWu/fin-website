@@ -588,13 +588,15 @@ export default function AboutPage() {
             <div className="right-scroll-panel" style={{ borderLeft: '1px solid #3A4060', paddingLeft: 32, height: '100%', maxHeight: '440px', overflowY: 'auto', direction: 'rtl' }}>
               <div style={{ direction: 'ltr' }}>
                 {features.map((feature, idx) => (
-                  <div key={feature.title} style={{ marginBottom: idx < features.length - 1 ? 36 : 0 }}>
-                    <button
-                      onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
+                  <div 
+                    key={feature.title} 
+                    style={{ marginBottom: idx < features.length - 1 ? 36 : 0 }}
+                    onMouseEnter={() => setOpenIndex(idx)}
+                    onMouseLeave={() => setOpenIndex(null)}
+                  >
+                    <div
                       style={{
                         width: '100%',
-                        background: 'none',
-                        border: 'none',
                         color: 'white',
                         fontWeight: 700,
                         fontSize: '1.25rem',
@@ -602,16 +604,13 @@ export default function AboutPage() {
                         textTransform: 'uppercase',
                         marginBottom: 8,
                         textAlign: 'left',
-                        cursor: 'pointer',
-                        outline: 'none',
                         padding: '8px 0',
-                        transition: 'color 0.2s',
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
+                        cursor: 'pointer',
+                        transition: 'color 0.2s',
                       }}
-                      aria-expanded={openIndex === idx}
-                      aria-controls={`accordion-panel-${idx}`}
                     >
                       <span>{feature.title}</span>
                       <span style={{ 
@@ -623,9 +622,8 @@ export default function AboutPage() {
                       }}>
                         {openIndex === idx ? '−' : '+'}
                       </span>
-                    </button>
+                    </div>
                     <div
-                      id={`accordion-panel-${idx}`}
                       style={{
                         maxHeight: openIndex === idx ? 200 : 0,
                         overflow: 'hidden',

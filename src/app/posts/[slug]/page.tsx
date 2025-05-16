@@ -5,6 +5,7 @@ import { client } from "@/sanity/client";
 import Link from "next/link";
 import PortfolioHeader from "@/components/PortfolioHeader";
 import Footer from "@/components/Footer";
+import SocialIcons from "./SocialIcons";
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
 
@@ -88,7 +89,7 @@ export default async function PostPage({
   return (
     <div style={{ background: '#1E2332', minHeight: '100vh', width: '100vw', fontFamily: 'var(--font-inter)' }}>
       <PortfolioHeader />
-      <main style={{ maxWidth: 1400, margin: '0 auto', padding: '50px 24px 48px 24px', minHeight: '80vh' }}>
+      <main style={{ maxWidth: 850, margin: '0 auto', padding: '50px 24px 48px 24px', minHeight: '80vh' }}>
         <Link href="/posts" style={{ 
           color: '#B0B3C7', 
           textDecoration: 'none',
@@ -112,6 +113,43 @@ export default async function PostPage({
             }}
           />
         )}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2rem' }}>
+          <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+            {/* Date chip */}
+            {post.publishedAt && (
+              <span style={{
+                background: '#23263a',
+                color: '#fff',
+                borderRadius: '20px',
+                padding: '6px 16px',
+                fontSize: '1rem',
+                fontWeight: 600,
+                letterSpacing: '1px',
+                border: '1px solid #B0B3C7',
+                display: 'inline-block',
+                fontFamily: 'var(--font-inter)'
+              }}>
+                {new Date(post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })}
+              </span>
+            )}
+            {/* Category chips */}
+            {Array.isArray(post.categories) && post.categories.map((cat: string) => (
+              <span key={cat} style={{
+                background: '#fff',
+                color: '#23263a',
+                borderRadius: '16px',
+                padding: '6px 14px',
+                fontSize: '0.95rem',
+                fontWeight: 600,
+                marginLeft: '2px',
+                display: 'inline-block',
+                fontFamily: 'var(--font-inter)'
+              }}>{cat.toUpperCase()}</span>
+            ))}
+          </div>
+          {/* Social icons */}
+          <SocialIcons />
+        </div>
         <h1 style={{ 
           color: 'white', 
           fontSize: '2.5rem', 
@@ -125,7 +163,7 @@ export default async function PostPage({
           marginBottom: '2rem',
           fontFamily: 'var(--font-inter)'
         }}>
-          Published: {new Date(post.publishedAt).toLocaleDateString()}
+          {/* Optionally keep this for redundancy, or remove if not needed */}
         </p>
         <div style={{ 
           color: 'white',

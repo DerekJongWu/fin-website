@@ -46,8 +46,7 @@ export default function AboutPage() {
         style={{
           maxWidth: 1400,
           margin: '0 auto',
-          padding: '50px 24px 48px 24px',
-          minHeight: '95vh',
+          padding: '50px 24px 24px 24px',
           fontFamily: 'var(--font-inter)'
         }}
       >
@@ -598,20 +597,32 @@ export default function AboutPage() {
                         border: 'none',
                         color: 'white',
                         fontWeight: 700,
-                        fontSize: '1rem',
+                        fontSize: '1.25rem',
                         letterSpacing: 0.5,
                         textTransform: 'uppercase',
-                        marginBottom: 12,
+                        marginBottom: 8,
                         textAlign: 'left',
                         cursor: 'pointer',
                         outline: 'none',
-                        padding: 0,
+                        padding: '8px 0',
                         transition: 'color 0.2s',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
                       }}
                       aria-expanded={openIndex === idx}
                       aria-controls={`accordion-panel-${idx}`}
                     >
-                      {feature.title}
+                      <span>{feature.title}</span>
+                      <span style={{ 
+                        fontSize: '1.5rem',
+                        transition: 'all 0.3s ease',
+                        color: '#FFD700',
+                        width: '20px',
+                        textAlign: 'center'
+                      }}>
+                        {openIndex === idx ? '−' : '+'}
+                      </span>
                     </button>
                     <div
                       id={`accordion-panel-${idx}`}
@@ -629,7 +640,7 @@ export default function AboutPage() {
                       <div style={{ padding: openIndex === idx ? '0 0 8px 0' : '0' }}>{feature.description}</div>
                     </div>
                     {idx < features.length - 1 && (
-                      <hr style={{ border: 'none', borderTop: '1px solid #3A4060', margin: '32px 0 0 0' }} />
+                      <hr style={{ border: 'none', borderTop: '1px solid #3A4060', margin: '24px 0 0 0' }} />
                     )}
                   </div>
                 ))}
@@ -701,7 +712,7 @@ export default function AboutPage() {
             scrollbar-width: thin;
           }
           button:hover {
-            background: rgba(255,255,255,0.05) !important;
+            color: #FFD700 !important;
           }
         `}</style>
       </main>

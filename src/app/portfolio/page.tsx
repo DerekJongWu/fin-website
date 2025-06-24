@@ -1,6 +1,11 @@
 import PortfolioHeader from '@/components/PortfolioHeader';
 import Footer from '@/components/Footer';
 import PortfolioClient from './PortfolioClient';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Portfolio - Fin Capital',
+};
 
 // Replace with your actual API endpoint
 const API_URL = 'https://app.lighthouse.ai/api?type=portfolio&key=sT3Qb2Li1ZkMQ3iE6ScJtXev2raZZHgc';

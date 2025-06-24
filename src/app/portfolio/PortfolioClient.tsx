@@ -11,6 +11,7 @@ interface Company {
   fund: string;
 }
 
+
 export default function PortfolioClient({ companies }: { companies: Company[] }) {
   // Alphabetize companies by name
   const sortedCompanies = [...companies].sort((a, b) => a.name.localeCompare(b.name));

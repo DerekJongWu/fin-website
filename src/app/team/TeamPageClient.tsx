@@ -4,6 +4,7 @@ import PortfolioHeader from '@/components/PortfolioHeader';
 import Footer from '@/components/Footer';
 import { urlFor } from './page';
 
+
 export default function TeamPageClient({ team }: { team: any[] }) {
   const [selected, setSelected] = useState<any | null>(null);
   const [activeTag, setActiveTag] = useState<string>('All');

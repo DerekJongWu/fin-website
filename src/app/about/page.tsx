@@ -4,6 +4,7 @@ import PortfolioHeader from '@/components/PortfolioHeader';
 import Footer from '@/components/Footer';
 import React, { useState } from 'react';
 
+
 export default function AboutPage() {
   const features = [
     {
@@ -581,11 +582,11 @@ export default function AboutPage() {
                 How we add value
               </h2>
               <div style={{ color: '#B0B3C7', fontSize: '1.25rem', lineHeight: 1.6 }}>
-                Our Platform team specializes in solving your most pressing challenges. We are passionate about rolling up our sleeves and partnering with founders that have deep financial services experience, audacious goals, differentiated products, and a global mindset.
+                Our team specializes in solving your most pressing challenges. We are passionate about rolling up our sleeves and partnering with founders that have deep financial services experience, audacious goals, differentiated products, and a global mindset.
               </div>
             </div>
             {/* Right column */}
-            <div className="right-scroll-panel" style={{ borderLeft: '1px solid #3A4060', paddingLeft: 32, height: '100%', maxHeight: '440px', overflowY: 'auto', direction: 'rtl' }}>
+            <div className="right-scroll-panel" style={{ borderLeft: '1px solid #3A4060', paddingLeft: 32, height: '100%' }}>
               <div style={{ direction: 'ltr' }}>
                 {features.map((feature, idx) => (
                   <div 
@@ -691,23 +692,6 @@ export default function AboutPage() {
           .subsector-card:hover .subsector-desc-overlay {
             opacity: 1;
             pointer-events: auto;
-          }
-          .right-scroll-panel::-webkit-scrollbar {
-            width: 10px;
-            background: #23263a;
-            border-radius: 8px;
-          }
-          .right-scroll-panel::-webkit-scrollbar-thumb {
-            background: rgba(255, 215, 0, 0.45);
-            border-radius: 8px;
-            border: 2px solid #23263a;
-          }
-          .right-scroll-panel::-webkit-scrollbar-thumb:hover {
-            background: #FFD700;
-          }
-          .right-scroll-panel {
-            scrollbar-color: #FFD700 #23263a;
-            scrollbar-width: thin;
           }
           button:hover {
             color: #FFD700 !important;

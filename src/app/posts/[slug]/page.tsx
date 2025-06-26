@@ -28,7 +28,7 @@ interface PostDetail {
   newslink?: string;
   image?: SanityImageSource;
   categories?: string[];
-  body?: any[];
+  body?: Record<string, unknown>[];
 }
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
@@ -195,7 +195,7 @@ export default async function PostPage({
           lineHeight: 1.7,
           fontFamily: 'var(--font-inter)'
         }}>
-          {Array.isArray(post.body) && <PortableText value={post.body} components={components} />}
+          {Array.isArray(post.body) && <PortableText value={post.body as any} components={components} />}
         </div>
       </main>
       <Footer />

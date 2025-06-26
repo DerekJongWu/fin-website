@@ -1,4 +1,4 @@
-import { PortableText, type SanityDocument } from "next-sanity";
+import { PortableText } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { client } from "@/sanity/client";
@@ -13,6 +13,22 @@ interface ImageValue {
     _ref: string;
   };
   alt?: string;
+}
+
+// Define interface for individual post (extends the base Post interface)
+interface PostDetail {
+  _id: string;
+  postType: string;
+  featured: boolean;
+  title: string;
+  publishedAt: string;
+  slug: {
+    current: string;
+  };
+  newslink?: string;
+  image?: SanityImageSource;
+  categories?: string[];
+  body?: any[];
 }
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
@@ -89,7 +105,7 @@ export default async function PostPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const post = await client.fetch<SanityDocument>(POST_QUERY, await params, options);
+  const post = await client.fetch<PostDetail>(POST_QUERY, await params, options);
   const postImageUrl = post.image
     ? urlFor(post.image)?.width(550).height(310).url()
     : null;

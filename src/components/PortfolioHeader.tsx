@@ -34,9 +34,9 @@ const PortfolioHeader: React.FC = () => {
     }}>
       {/* Logo */}
       <div style={{ display: 'flex', alignItems: 'center', height: '75px' }}>
-        <a href="/" aria-label="Home" style={{ display: 'flex', alignItems: 'center', height: '100%', paddingTop: '0.5rem' }}>
+        <Link href="/" aria-label="Home" style={{ display: 'flex', alignItems: 'center', height: '100%', paddingTop: '0.5rem' }}>
           <img src="/FinLogo-white.png" alt="Fin Logo" style={{ height: '65px', display: 'block' }} />
-        </a>
+        </Link>
       </div>
 
       {/* Navigation Links */}
@@ -50,9 +50,9 @@ const PortfolioHeader: React.FC = () => {
           alignItems: 'center',
           fontFamily: 'var(--font-inter)'
         }}>
-          <li><a href="/about" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>About</a></li>
-          <li><a href="/team" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Team</a></li>
-          <li><a href="/portfolio" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Portfolio</a></li>
+          <li><Link href="/about" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>About</Link></li>
+          <li><Link href="/team" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Team</Link></li>
+          <li><Link href="/portfolio" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Portfolio</Link></li>
           <li 
             className="career-dropdown"
             onMouseEnter={handleMouseEnter}
@@ -117,7 +117,7 @@ const PortfolioHeader: React.FC = () => {
               </div>
             )}
           </li>
-          <li><a href="/posts" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>News & Insights</a></li>
+          <li><Link href="/posts" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>News & Insights</Link></li>
         </ul>
       </nav>
 

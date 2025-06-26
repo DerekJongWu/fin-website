@@ -7,6 +7,17 @@ export const metadata: Metadata = {
   title: 'Portfolio - Fin Capital',
 };
 
+// Define the interface for the raw API response
+interface CompanyRaw {
+  "Company Name": string;
+  "Website": string;
+  "Description": string;
+  "Thesis": string;
+  "Logo URL": string;
+  "Status": string;
+  "Fund": string;
+}
+
 // Replace with your actual API endpoint
 const API_URL = 'https://app.lighthouse.ai/api?type=portfolio&key=sT3Qb2Li1ZkMQ3iE6ScJtXev2raZZHgc';
 
@@ -17,7 +28,7 @@ export default async function PortfolioPage() {
   const companiesRaw = await res.json();
 
   // Map API keys to expected keys for PortfolioClient
-  const companies = companiesRaw.map((c: any) => ({
+  const companies = companiesRaw.map((c: CompanyRaw) => ({
     name: c["Company Name"],
     website: c["Website"],
     description: c['Description'],

@@ -4,6 +4,18 @@ import { useState } from "react";
 import PortfolioHeader from "@/components/PortfolioHeader";
 import Footer from "@/components/Footer";
 
+// Define the interface for post data
+interface Post {
+  _id: string;
+  postType: string;
+  featured: boolean;
+  title: string;
+  publishedAt: string;
+  slug: {
+    current: string;
+  };
+  newslink?: string;
+}
 
 const FILTERS = [
   { label: "All", value: "all" },
@@ -19,7 +31,7 @@ function getCardBg(postType: string) {
   return "rgba(255,255,255,0.03)";
 }
 
-export default function PostsPageClient({ posts }: { posts: any[] }) {
+export default function PostsPageClient({ posts }: { posts: Post[] }) {
   const [activeFilter, setActiveFilter] = useState("all");
 
   const filteredPosts = activeFilter === "all"

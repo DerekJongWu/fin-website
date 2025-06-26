@@ -37,9 +37,9 @@ const Header: React.FC = () => {
     }}>
       {/* Logo */}
       <div style={{ display: 'flex', alignItems: 'center', height: '75px' }}>
-        <a href="/" aria-label="Home" style={{ display: 'flex', alignItems: 'center', height: '100%', paddingTop: '0.5rem' }}>
+        <Link href="/" aria-label="Home" style={{ display: 'flex', alignItems: 'center', height: '100%', paddingTop: '0.5rem' }}>
           <img src="/FinLogo-white.png" alt="Fin Logo" style={{ height: '65px', display: 'block' }} />
-        </a>
+        </Link>
       </div>
 
       {/* Navigation Links */}
@@ -53,9 +53,9 @@ const Header: React.FC = () => {
           alignItems: 'center',
           fontFamily: 'var(--font-inter)'
         }}>
-          <li><a href="/about" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>About</a></li>
-          <li><a href="/team" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Team</a></li>
-          <li><a href="/portfolio" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Portfolio</a></li>
+          <li><Link href="/about" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>About</Link></li>
+          <li><Link href="/team" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Team</Link></li>
+          <li><Link href="/portfolio" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Portfolio</Link></li>
           <li 
             className="career-dropdown"
             onMouseEnter={handleMouseEnter}
@@ -120,35 +120,9 @@ const Header: React.FC = () => {
               </div>
             )}
           </li>
-          <li><a href="/posts" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>News & Insights</a></li>
+          <li><Link href="/posts" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>News & Insights</Link></li>
         </ul>
       </nav>
-
-      <style jsx>{`
-        .nav-link {
-          position: relative;
-          text-decoration: none;
-        }
-        
-        .nav-link::after {
-          content: '';
-          position: absolute;
-          width: 0;
-          height: 2px;
-          bottom: -2px;
-          left: 0;
-          background-color: #fff;
-          transition: width 0.3s ease-in-out;
-        }
-        
-        .nav-link:hover::after {
-          width: 100%;
-        }
-
-        .dropdown-menu {
-          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-      `}</style>
     </header>
   );
 };

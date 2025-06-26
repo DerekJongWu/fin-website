@@ -7,6 +7,14 @@ import PortfolioHeader from "@/components/PortfolioHeader";
 import Footer from "@/components/Footer";
 import SocialIcons from "./SocialIcons";
 
+// Define interface for image value in Portable Text
+interface ImageValue {
+  asset?: {
+    _ref: string;
+  };
+  alt?: string;
+}
+
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
 
 const { projectId, dataset } = client.config();
@@ -20,7 +28,7 @@ const options = { next: { revalidate: 30 } };
 // Custom components for Portable Text
 const components = {
   types: {
-    image: ({ value }: { value: any }) => {
+    image: ({ value }: { value: ImageValue }) => {
       if (!value?.asset?._ref) {
         return null;
       }

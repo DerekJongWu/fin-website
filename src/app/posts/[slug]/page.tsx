@@ -195,6 +195,7 @@ export default async function PostPage({
           lineHeight: 1.7,
           fontFamily: 'var(--font-inter)'
         }}>
+          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
           {Array.isArray(post.body) && <PortableText value={post.body as any} components={components} />}
         </div>
       </main>

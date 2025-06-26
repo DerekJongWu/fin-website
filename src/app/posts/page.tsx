@@ -1,6 +1,11 @@
 import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
 import PostsPageClient from "./PostsPageClient";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'News & Insights - Fin Capital',
+};
 
 const POSTS_QUERY = `*[
   _type == "post"

@@ -13,9 +13,9 @@ const FILTERS = [
 ];
 
 function getCardBg(postType: string) {
-  if (postType === "GTM Navigator") return "#E1E2E5";
-  if (postType === "Fin News") return "#00539B";
-  if (postType === "Investment Announcement") return "#FFD700";
+  if (postType === "GTM Navigator") return "#2D50A0";
+  if (postType === "Fin News") return "#8F8F8F";
+  if (postType === "Investment Announcement") return "#BAA134";
   return "rgba(255,255,255,0.03)";
 }
 
@@ -195,8 +195,8 @@ export default function PostsPageClient({ posts }: { posts: any[] }) {
                   target={post.newslink ? "_blank" : undefined}
                   rel={post.newslink ? "noopener noreferrer" : undefined}
                 >
-                  <h2 style={{ color: '#1E2332', fontSize: '1.3rem', fontWeight: 600, marginBottom: 8, fontFamily: 'var(--font-inter)' }}>{post.title}</h2>
-                  <p style={{ color: '#1E2332', fontSize: '1.05rem', fontFamily: 'var(--font-inter)' }}>{new Date(post.publishedAt).toLocaleDateString()}</p>
+                  <h2 style={{ color: 'white', fontSize: '1.3rem', fontWeight: 600, marginBottom: 8, fontFamily: 'var(--font-inter)' }}>{post.title}</h2>
+                  <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.05rem', fontFamily: 'var(--font-inter)' }}>{new Date(post.publishedAt).toLocaleDateString()}</p>
                 </Link>
               </div>
             ))}

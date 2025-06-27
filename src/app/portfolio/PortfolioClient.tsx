@@ -417,14 +417,14 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
           >
             {/* Left: Logo */}
             <div style={{ flex: 1.3, background: '#181a28', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '32px 0', minWidth: 0 }}>
-              <a href={selected.website} target="_blank" rel="noopener noreferrer" style={{ width: '90%', maxWidth: 240, display: 'block', margin: '0 auto' }}>
+              <a href={selected.website} target="_blank" rel="noopener noreferrer" style={{ width: '90%', maxWidth: 320, display: 'block', margin: '0 auto' }}>
                 <img
                   src={selected.logoUrl}
                   alt={selected.name + " logo"}
                   style={{
                     width: '100%',
-                    maxWidth: 240,
-                    maxHeight: 240,
+                    maxWidth: 320,
+                    maxHeight: 320,
                     objectFit: 'contain',
                     borderRadius: 20,
                     background: '#fff',

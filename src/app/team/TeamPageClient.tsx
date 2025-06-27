@@ -19,6 +19,14 @@ interface TeamMember {
   order: number;
 }
 
+interface Advisor {
+  _id: string;
+  name: string;
+  title: string;
+  linkedinUrl?: string;
+  order: number;
+}
+
 // Image URL builder setup
 const { projectId, dataset } = client.config();
 const urlFor = (source: SanityImageSource) =>
@@ -26,7 +34,7 @@ const urlFor = (source: SanityImageSource) =>
     ? imageUrlBuilder({ projectId, dataset }).image(source)
     : null;
 
-export default function TeamPageClient({ team }: { team: TeamMember[] }) {
+export default function TeamPageClient({ team, advisors }: { team: TeamMember[]; advisors: Advisor[] }) {
   const [selected, setSelected] = useState<TeamMember | null>(null);
   const [activeTag, setActiveTag] = useState<string>('All');
 
@@ -150,6 +158,50 @@ export default function TeamPageClient({ team }: { team: TeamMember[] }) {
           ))}
         </div>
       </main>
+      {/* Our Advisors Section */}
+      <section style={{ maxWidth: 1400, margin: '56px auto 0 auto', padding: '0 24px 64px 24px', fontFamily: 'var(--font-inter)' }}>
+        <h2 style={{ color: 'white', fontSize: '2rem', fontWeight: 600, marginBottom: 18, marginTop: 0, letterSpacing: 0.5 }}>OUR ADVISORS</h2>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: `repeat(${Math.ceil(advisors.length / 2)}, 1fr)`,
+            gridTemplateRows: 'repeat(2, auto)',
+            gap: '2.5rem 0',
+            color: 'white',
+            fontFamily: 'var(--font-inter)',
+            width: '100%',
+          }}
+        >
+          {advisors.map((advisor, idx) => (
+            <div key={advisor._id} style={{ marginBottom: 0, gridRow: idx < Math.ceil(advisors.length / 2) ? 1 : 2 }}>
+              {advisor.linkedinUrl ? (
+                <a
+                  href={advisor.linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: 'white',
+                    fontWeight: 700,
+                    fontSize: '1rem',
+                    textDecoration: 'none',
+                    transition: 'border-bottom 0.2s',
+                    borderBottom: '2px solid transparent',
+                    display: 'inline-block',
+                    cursor: 'pointer',
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.borderBottom = '2px solid #fff')}
+                  onMouseLeave={e => (e.currentTarget.style.borderBottom = '2px solid transparent')}
+                >
+                  {advisor.name}
+                </a>
+              ) : (
+                <span style={{ color: 'white', fontWeight: 700, fontSize: '1rem' }}>{advisor.name}</span>
+              )}
+              <div style={{ color: '#B0B3C7', fontWeight: 400, fontSize: '0.92rem', marginTop: 2 }}>{advisor.title}</div>
+            </div>
+          ))}
+        </div>
+      </section>
       <Footer />
       {/* Modal */}
       {selected && (
@@ -194,10 +246,10 @@ export default function TeamPageClient({ team }: { team: TeamMember[] }) {
                   src={urlFor(selected.image)?.width(520).height(520).fit('crop').url() || ''}
                   alt={selected.name}
                   style={{
-                    width: '90%',
+                    width: '85%',
                     height: '100%',
-                    maxWidth: 320,
-                    maxHeight: 400,
+                    maxWidth: 380,
+                    maxHeight: 480,
                     aspectRatio: '4/5',
                     objectFit: 'cover',
                     borderRadius: 28,
@@ -207,7 +259,7 @@ export default function TeamPageClient({ team }: { team: TeamMember[] }) {
                   }}
                 />
               )}
-              <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap', justifyContent: 'flex-start', width: '90%', maxWidth: 440, marginLeft: 'auto', marginRight: 'auto' }}>
+              <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap', justifyContent: 'flex-start', width: '85%', maxWidth: 380, marginLeft: 'auto', marginRight: 'auto' }}>
                 {selected.linkedinUrl && (
                   <a
                     href={selected.linkedinUrl}

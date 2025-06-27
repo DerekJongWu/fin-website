@@ -18,9 +18,9 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div style={{ fontFamily: 'var(--font-inter)' }}>
+    <div style={{ fontFamily: 'var(--font-inter)', overscrollBehavior: 'none' }}>
       <Header />
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden" style={{ overscrollBehavior: 'none' }}>
         <main
           className="relative w-full flex flex-col"
           style={{
@@ -33,6 +33,7 @@ export default function HomePage() {
             transform: `scale(${imageLoaded ? 1.1 : 1})`,
             transition: 'transform 1s ease-out',
             transformOrigin: 'center center',
+            overscrollBehavior: 'none',
           }}
         >
           <div

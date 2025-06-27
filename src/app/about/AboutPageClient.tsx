@@ -374,7 +374,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
                   </div>
 
                   {/* CFO Tech Stack */}
-                  <div className="subsector-card" style={{
+                  <div className="subsector-card long-description" style={{
                     background: 'rgba(255,255,255,0.03)',
                     borderRadius: 16,
                     padding: '24px',
@@ -390,11 +390,16 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
                   }}>
                     <span style={{ display: 'block', marginBottom: 10 }}>
                       <svg width="52" height="52" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="19" cy="19" r="16" fill="#FFD700" fillOpacity="0.13"/>
-                        <path d="M19 19V7" stroke="#FFD700" strokeWidth="3" strokeLinecap="round"/>
-                        <path d="M19 19L29 29" stroke="#FFD700" strokeWidth="3" strokeLinecap="round"/>
-                        <path d="M19 19L9 29" stroke="#FFD700" strokeWidth="3" strokeLinecap="round"/>
-                        <rect x="16" y="25" width="6" height="6" rx="1.5" fill="#FFD700"/>
+                        <rect x="6" y="6" width="26" height="26" rx="3" fill="#FFD700" fillOpacity="0.13" stroke="#FFD700" strokeWidth="2"/>
+                        <rect x="10" y="10" width="6" height="6" rx="1" fill="#FFD700"/>
+                        <rect x="18" y="10" width="6" height="6" rx="1" fill="#FFD700" fillOpacity="0.7"/>
+                        <rect x="26" y="10" width="6" height="6" rx="1" fill="#FFD700" fillOpacity="0.5"/>
+                        <rect x="10" y="18" width="6" height="6" rx="1" fill="#FFD700" fillOpacity="0.7"/>
+                        <rect x="18" y="18" width="6" height="6" rx="1" fill="#FFD700"/>
+                        <rect x="26" y="18" width="6" height="6" rx="1" fill="#FFD700" fillOpacity="0.7"/>
+                        <rect x="10" y="26" width="6" height="6" rx="1" fill="#FFD700" fillOpacity="0.5"/>
+                        <rect x="18" y="26" width="6" height="6" rx="1" fill="#FFD700" fillOpacity="0.7"/>
+                        <rect x="26" y="26" width="6" height="6" rx="1" fill="#FFD700"/>
                       </svg>
                     </span>
                     <h3 className="subsector-title" style={{ color: 'white', fontSize: '1.25rem', marginBottom: 12, zIndex: 1 }}>
@@ -406,7 +411,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
                   </div>
 
                   {/* Asset/Wealth Management & Capital Markets */}
-                  <div className="subsector-card" style={{
+                  <div className="subsector-card long-description" style={{
                     background: 'rgba(255,255,255,0.03)',
                     borderRadius: 16,
                     padding: '24px',
@@ -420,13 +425,15 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
                     position: 'relative',
                     overflow: 'hidden'
                   }}>
-                    <span style={{ display: 'block', marginBottom: 10 }}>
+                    <span style={{ display: 'block', marginBottom: 6 }}>
                       <svg width="52" height="52" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <ellipse cx="19" cy="32" rx="10" ry="3" fill="#FFD700" fillOpacity="0.13"/>
-                        <rect x="13" y="18" width="12" height="8" rx="3" fill="#FFD700"/>
-                        <rect x="16" y="10" width="6" height="8" rx="2" fill="#FFD700" fillOpacity="0.7"/>
-                        <path d="M19 10v-3" stroke="#191B23" strokeWidth="2" strokeLinecap="round"/>
-                        <circle cx="19" cy="7" r="1.5" fill="#191B23"/>
+                        <rect x="8" y="24" width="4" height="8" rx="1" fill="#FFD700"/>
+                        <rect x="14" y="18" width="4" height="14" rx="1" fill="#FFD700" fillOpacity="0.8"/>
+                        <rect x="20" y="12" width="4" height="20" rx="1" fill="#FFD700" fillOpacity="0.6"/>
+                        <rect x="26" y="8" width="4" height="24" rx="1" fill="#FFD700" fillOpacity="0.4"/>
+                        <path d="M6 32h26" stroke="#FFD700" strokeWidth="2" strokeLinecap="round"/>
+                        <circle cx="19" cy="6" r="2" fill="#FFD700"/>
+                        <path d="M19 8v4" stroke="#FFD700" strokeWidth="2" strokeLinecap="round"/>
                       </svg>
                     </span>
                     <h3 className="subsector-title" style={{ color: 'white', fontSize: '1.25rem', marginBottom: 12, zIndex: 1 }}>
@@ -469,7 +476,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
                   </div>
 
                   {/* Vertical Fintech */}
-                  <div className="subsector-card" style={{
+                  <div className="subsector-card medium-description" style={{
                     background: 'rgba(255,255,255,0.03)',
                     borderRadius: 16,
                     padding: '24px',
@@ -485,15 +492,14 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
                   }}>
                     <span style={{ display: 'block', marginBottom: 10 }}>
                       <svg width="52" height="52" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="17" y="10" width="4" height="18" rx="2" fill="#FFD700"/>
-                        <rect x="10" y="18" width="4" height="10" rx="2" fill="#FFD700"/>
-                        <rect x="24" y="18" width="4" height="10" rx="2" fill="#FFD700"/>
-                        <path d="M19 10V6" stroke="#191B23" strokeWidth="2" strokeLinecap="round"/>
-                        <path d="M12 18V14" stroke="#191B23" strokeWidth="2" strokeLinecap="round"/>
-                        <path d="M26 18V14" stroke="#191B23" strokeWidth="2" strokeLinecap="round"/>
-                        <path d="M19 28v4" stroke="#191B23" strokeWidth="2" strokeLinecap="round"/>
-                        <path d="M12 28v4" stroke="#191B23" strokeWidth="2" strokeLinecap="round"/>
-                        <path d="M26 28v4" stroke="#191B23" strokeWidth="2" strokeLinecap="round"/>
+                        <rect x="6" y="8" width="8" height="22" rx="2" fill="#FFD700" fillOpacity="0.8"/>
+                        <rect x="15" y="12" width="8" height="18" rx="2" fill="#FFD700" fillOpacity="0.6"/>
+                        <rect x="24" y="16" width="8" height="14" rx="2" fill="#FFD700" fillOpacity="0.4"/>
+                        <path d="M10 6h18" stroke="#FFD700" strokeWidth="2" strokeLinecap="round"/>
+                        <path d="M10 32h18" stroke="#FFD700" strokeWidth="2" strokeLinecap="round"/>
+                        <circle cx="10" cy="6" r="1" fill="#FFD700"/>
+                        <circle cx="19" cy="6" r="1" fill="#FFD700"/>
+                        <circle cx="28" cy="6" r="1" fill="#FFD700"/>
                       </svg>
                     </span>
                     <h3 className="subsector-title" style={{ color: 'white', fontSize: '1.25rem', marginBottom: 12, zIndex: 1 }}>
@@ -521,10 +527,11 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
                   }}>
                     <span style={{ display: 'block', marginBottom: 10 }}>
                       <svg width="52" height="52" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="11" y="13" width="16" height="20" rx="3" fill="#FFD700" fillOpacity="0.13"/>
-                        <rect x="15" y="17" width="8" height="12" rx="2" fill="#FFD700"/>
-                        <path d="M19 17v-4" stroke="#191B23" strokeWidth="2" strokeLinecap="round"/>
-                        <circle cx="19" cy="13" r="2" fill="#191B23"/>
+                        <path d="M19 6L32 12V22C32 28 26 32 19 32C12 32 6 28 6 22V12L19 6Z" fill="#FFD700" fillOpacity="0.13" stroke="#FFD700" strokeWidth="2"/>
+                        <path d="M19 12L26 16V24C26 27 23 30 19 30C15 30 12 27 12 24V16L19 12Z" fill="#FFD700" fillOpacity="0.3"/>
+                        <circle cx="19" cy="20" r="3" fill="#FFD700"/>
+                        <path d="M19 17V23" stroke="#191B23" strokeWidth="2" strokeLinecap="round"/>
+                        <path d="M16 20H22" stroke="#191B23" strokeWidth="2" strokeLinecap="round"/>
                       </svg>
                     </span>
                     <h3 className="subsector-title" style={{ color: 'white', fontSize: '1.25rem', marginBottom: 12, zIndex: 1 }}>
@@ -663,12 +670,16 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
           justify-content: center;
           opacity: 0;
           pointer-events: none;
-          font-size: 1.08rem;
+          font-size: clamp(0.85rem, 2.8vw, 1.2rem);
           font-weight: 500;
-          padding: 24px;
+          padding: 20px;
           text-align: left;
           transition: opacity 0.3s;
           z-index: 2;
+          line-height: 1.4;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          hyphens: auto;
         }
         .subsector-card:hover .subsector-title {
           opacity: 0;
@@ -677,6 +688,21 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
           opacity: 1;
           pointer-events: auto;
         }
+        
+        /* Specific styling for expanded sub-sector cards */
+        .subsector-card .subsector-desc-overlay {
+          font-size: clamp(0.8rem, 2.2vw, 1.05rem);
+        }
+        
+        /* Adjust font size for longer descriptions */
+        .subsector-card.long-description .subsector-desc-overlay {
+          font-size: clamp(0.75rem, 2vw, 0.95rem);
+        }
+        
+        .subsector-card.medium-description .subsector-desc-overlay {
+          font-size: clamp(0.8rem, 2.2vw, 1rem);
+        }
+        
         button:hover {
           color: #FFD700 !important;
         }

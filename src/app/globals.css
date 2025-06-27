@@ -12,6 +12,8 @@ html, body {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
+  overscroll-behavior: none;
+  scroll-padding-top: 0;
 }
 
 body {
@@ -23,6 +25,7 @@ body {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  overscroll-behavior: none;
 }
 
 /* Better text rendering */

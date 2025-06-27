@@ -1,9 +1,8 @@
-'use client';
-
+'use client'
 import Link from 'next/link';
 import React, { useState, useRef } from 'react';
 
-const Header: React.FC = () => {
+const PortfolioHeader: React.FC = () => {
   const [isCareerDropdownOpen, setIsCareerDropdownOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -27,12 +26,10 @@ const Header: React.FC = () => {
       justifyContent: 'space-between', 
       padding: '1rem 2rem',
       height: '75px',
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
+      position: 'relative',
       backgroundColor: 'transparent',
       zIndex: 1000,
+      width: '100%',
       fontFamily: 'var(--font-inter)'
     }}>
       {/* Logo */}
@@ -43,7 +40,7 @@ const Header: React.FC = () => {
       </div>
 
       {/* Navigation Links */}
-      <nav style={{ display: 'flex', alignItems: 'center' }}>
+      <nav style={{ display: 'flex', alignItems: 'center', marginRight: '0.95rem' }}>
         <ul style={{ 
           display: 'flex', 
           listStyle: 'none', 
@@ -53,16 +50,16 @@ const Header: React.FC = () => {
           alignItems: 'center',
           fontFamily: 'var(--font-inter)'
         }}>
-          <li><Link href="/about" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>About</Link></li>
-          <li><Link href="/team" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Team</Link></li>
-          <li><Link href="/portfolio" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Portfolio</Link></li>
+          <li><Link href="/about" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>About</Link></li>
+          <li><Link href="/team" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Team</Link></li>
+          <li><Link href="/portfolio" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>Portfolio</Link></li>
           <li 
             className="career-dropdown"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             style={{ position: 'relative' }}
           >
-            <span className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem', cursor: 'pointer' }}>
+            <span className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem', cursor: 'pointer' }}>
               Career
             </span>
             {isCareerDropdownOpen && (
@@ -120,11 +117,34 @@ const Header: React.FC = () => {
               </div>
             )}
           </li>
-          <li><Link href="/posts" className="nav-link" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>News & Insights</Link></li>
+          <li><Link href="/posts" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>News & Insights</Link></li>
         </ul>
       </nav>
+
+      <style jsx>{`
+        .nav-link {
+          position: relative;
+          text-decoration: none;
+        }
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          width: 0;
+          height: 2px;
+          bottom: -2px;
+          left: 0;
+          background-color: white;
+          transition: width 0.3s ease-in-out;
+        }
+        .nav-link:hover::after {
+          width: 100%;
+        }
+        .dropdown-menu {
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+      `}</style>
     </header>
   );
 };
 
-export default Header;
+export default PortfolioHeader; 

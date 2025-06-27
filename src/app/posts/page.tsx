@@ -1,34 +1,32 @@
-import Link from "next/link";
-import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
-import Header from "@/components/Header";
+import PostsPageClient from "./PostsPageClient";
+import { Metadata } from 'next';
+
+// Define the interface for post data (matching PostsPageClient)
+interface Post {
+  _id: string;
+  postType: string;
+  featured: boolean;
+  title: string;
+  publishedAt: string;
+  slug: {
+    current: string;
+  };
+  newslink?: string;
+}
+
+export const metadata: Metadata = {
+  title: 'News & Insights - Fin Capital',
+};
 
 const POSTS_QUERY = `*[
   _type == "post"
   && defined(slug.current)
-]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}`;
+]|order(publishedAt desc) {_id, title, slug, publishedAt, featured, newslink, postType}`;
 
 const options = { next: { revalidate: 30 } };
 
 export default async function PostsPage() {
-  const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
-
-  return (
-    <>
-      <Header />
-      <main className="container mx-auto min-h-screen max-w-3xl p-8 pt-24">
-        <h1 className="text-4xl font-bold mb-8">News & Insights</h1>
-        <ul className="flex flex-col gap-y-4">
-          {posts.map((post) => (
-            <li className="hover:underline" key={post._id}>
-              <Link href={`/posts/${post.slug.current}`}>
-                <h2 className="text-xl font-semibold">{post.title}</h2>
-                <p>{new Date(post.publishedAt).toLocaleDateString()}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </main>
-    </>
-  );
+  const posts = await client.fetch<Post[]>(POSTS_QUERY, {}, options);
+  return <PostsPageClient posts={posts} />;
 } 

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 interface Company {
   name: string;
@@ -21,6 +21,17 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
   const [selectedStages, setSelectedStages] = useState<string[]>([]);
   const [selectedStatuses, setSelectedStatuses] = useState<string[]>([]);
   const [hovered, setHovered] = useState<string | null>(null);
+  const scrollRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
+  // Reset scroll position when hover state changes
+  useEffect(() => {
+    if (hovered) {
+      const scrollElement = scrollRefs.current[hovered];
+      if (scrollElement) {
+        scrollElement.scrollTop = 0;
+      }
+    }
+  }, [hovered]);
 
   // Collect unique values for filter options
   const allTheses = Array.from(new Set(companies.map(c => c.thesis).filter(Boolean)));
@@ -55,6 +66,28 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
     }
     return true;
   });
+
+  // Dynamically adjust main container padding when hovering over bottom row cards
+  useEffect(() => {
+    const mainElement = document.querySelector('main');
+    if (mainElement) {
+      if (hovered) {
+        // Check if the hovered card is in the bottom row
+        const hoveredIndex = filteredCompanies.findIndex(company => company.name === hovered);
+        const totalCards = filteredCompanies.length;
+        const cardsPerRow = 4;
+        const bottomRowStartIndex = Math.max(0, totalCards - cardsPerRow);
+        
+        // Only add extra padding if hovering over bottom row cards
+        if (hoveredIndex >= bottomRowStartIndex) {
+          mainElement.style.paddingBottom = '348px';
+        }
+      } else {
+        // Restore original 48px bottom padding when not hovering
+        mainElement.style.paddingBottom = '48px';
+      }
+    }
+  }, [hovered, filteredCompanies]);
 
   return (
     <section style={{ fontFamily: 'var(--font-inter)' }}>
@@ -153,7 +186,7 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
                   )}
                   style={{ marginRight: 8 }}
                 />
-                {stage}
+                {stage === 'Growth' ? 'Growth/Late' : stage}
               </label>
             ))}
           </div>
@@ -274,7 +307,7 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
                 alignItems: 'flex-start',
                 justifyContent: 'flex-start',
                 pointerEvents: hovered === company.name ? 'auto' : 'none',
-                padding: '24px',
+                padding: '24px 24px 12px 24px',
               }}
               onMouseEnter={() => setHovered(company.name)}
               onMouseLeave={() => setHovered(null)}
@@ -289,26 +322,58 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
                 else if (isGrowth) stageText = 'Growth';
                 else stageText = 'Unknown';
                 return (
-                  <span style={{ display: 'block', width: '100%', textAlign: 'left', fontFamily: 'var(--font-inter)' }}>
-                    <div style={{ fontWeight: 700, fontSize: '1.08rem', marginBottom: 4 }}>
-                      Sub-sector:
+                  <div 
+                    ref={el => { scrollRefs.current[company.name] = el; }}
+                    style={{ 
+                      display: 'block', 
+                      width: '100%', 
+                      textAlign: 'left', 
+                      fontFamily: 'var(--font-inter)',
+                      overflowY: 'auto',
+                      maxHeight: '264px', // 300px - 36px padding (24px top + 12px bottom)
+                      paddingRight: '4px',
+                      scrollbarWidth: 'thin',
+                      scrollbarColor: 'rgba(0,0,0,0.2) transparent',
+                      msOverflowStyle: 'none',
+                    }}
+                  >
+                    <style>{`
+                      .hover-panel-scroll::-webkit-scrollbar {
+                        width: 6px;
+                      }
+                      .hover-panel-scroll::-webkit-scrollbar-track {
+                        background: transparent;
+                      }
+                      .hover-panel-scroll::-webkit-scrollbar-thumb {
+                        background: rgba(0,0,0,0.15);
+                        border-radius: 3px;
+                        transition: background 0.2s;
+                      }
+                      .hover-panel-scroll::-webkit-scrollbar-thumb:hover {
+                        background: rgba(0,0,0,0.25);
+                      }
+                    `}</style>
+                    <div className="hover-panel-scroll" style={{ width: '100%' }}>
+                      <div style={{ fontWeight: 700, fontSize: '1.08rem', marginBottom: 4 }}>
+                        Sub-sector:
+                      </div>
+                      <div style={{ fontSize: '0.75rem', fontWeight: 400, marginBottom: 18, color: '#1E2332', opacity: 0.85 }}>
+                        {company.thesis || 'No thesis available.'}
+                      </div>
+                      <div style={{ fontWeight: 700, fontSize: '1.08rem', marginBottom: 4 }}>
+                        Stage:
+                      </div>
+                      <div style={{ fontSize: '0.75rem', fontWeight: 400, color: '#1E2332', opacity: 0.85, marginBottom: 18 }}>
+                        {stageText}
+                      </div>
+                      <div style={{ fontWeight: 700, fontSize: '1.08rem', marginBottom: 4 }}>
+                        Description:
+                      </div>
+                      <div style={{ fontSize: '0.75rem', fontWeight: 400, color: '#1E2332', opacity: 0.85 }}>
+                        {company.description || 'No description available.'}
+                      </div>
                     </div>
-                    <div style={{ fontSize: '0.75rem', fontWeight: 400, marginBottom: 18, color: '#1E2332', opacity: 0.85 }}>
-                      {company.thesis || 'No thesis available.'}
-                    </div>
-                    <div style={{ fontWeight: 700, fontSize: '1.08rem', marginBottom: 4 }}>
-                      Stage:
-                    </div>
-                    <div style={{ fontSize: '0.75rem', fontWeight: 400, color: '#1E2332', opacity: 0.85, marginBottom: 18 }}>
-                      {stageText}
-                    </div>
-                    <div style={{ fontWeight: 700, fontSize: '1.08rem', marginBottom: 4 }}>
-                      Description:
-                    </div>
-                    <div style={{ fontSize: '0.75rem', fontWeight: 400, color: '#1E2332', opacity: 0.85 }}>
-                      {company.description || 'No description available.'}
-                    </div>
-                  </span>
+                  </div>
                 );
               })()}
             </div>
@@ -352,14 +417,14 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
           >
             {/* Left: Logo */}
             <div style={{ flex: 1.3, background: '#181a28', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '32px 0', minWidth: 0 }}>
-              <a href={selected.website} target="_blank" rel="noopener noreferrer" style={{ width: '90%', maxWidth: 320, display: 'block', margin: '0 auto' }}>
+              <a href={selected.website} target="_blank" rel="noopener noreferrer" style={{ width: '90%', maxWidth: 240, display: 'block', margin: '0 auto' }}>
                 <img
                   src={selected.logoUrl}
                   alt={selected.name + " logo"}
                   style={{
                     width: '100%',
-                    maxWidth: 320,
-                    maxHeight: 320,
+                    maxWidth: 240,
+                    maxHeight: 240,
                     objectFit: 'contain',
                     borderRadius: 20,
                     background: '#fff',
@@ -447,4 +512,4 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
       )}
     </section>
   );
-} 
+}

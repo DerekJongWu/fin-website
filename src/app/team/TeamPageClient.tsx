@@ -196,8 +196,8 @@ export default function TeamPageClient({ team }: { team: TeamMember[] }) {
                   style={{
                     width: '90%',
                     height: '100%',
-                    maxWidth: 440,
-                    maxHeight: 540,
+                    maxWidth: 320,
+                    maxHeight: 400,
                     aspectRatio: '4/5',
                     objectFit: 'cover',
                     borderRadius: 28,

@@ -86,7 +86,7 @@ export default function TeamPageClient({ team, advisors }: { team: TeamMember[];
                 borderRadius: 14,
                 padding: '10px 22px',
                 fontWeight: 600,
-                fontSize: '1.08rem',
+                fontSize: 'clamp(0.9rem, 2.5vw, 1.08rem)',
                 letterSpacing: 0.5,
                 cursor: 'pointer',
                 boxShadow: activeTag === tag ? '0 2px 8px 0 rgba(255,215,0,0.10)' : '0 1px 4px 0 rgba(0,0,0,0.07)',
@@ -99,11 +99,11 @@ export default function TeamPageClient({ team, advisors }: { team: TeamMember[];
             </button>
           ))}
         </div>
-        <h1 style={{ color: 'white', fontSize: '2.5rem', fontWeight: 700, marginBottom: 40, fontFamily: 'var(--font-inter)' }}>Our Team</h1>
+        <h1 style={{ color: 'white', fontSize: 'clamp(2rem, 5vw, 2.5rem)', fontWeight: 700, marginBottom: 40, fontFamily: 'var(--font-inter)' }}>Our Team</h1>
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             gap: '2.5rem',
             justifyItems: 'center',
           }}
@@ -128,7 +128,7 @@ export default function TeamPageClient({ team, advisors }: { team: TeamMember[];
                 style={{
                   width: '100%',
                   maxWidth: 370,
-                  height: 340,
+                  height: 'clamp(280px, 50vw, 340px)',
                   background: 'rgba(255,255,255,0.03)',
                   borderRadius: 24,
                   boxShadow: '0 2px 16px 0 rgba(0,0,0,0.10)',
@@ -152,28 +152,27 @@ export default function TeamPageClient({ team, advisors }: { team: TeamMember[];
                   />
                 )}
               </div>
-              <h2 style={{ color: 'white', fontSize: '1.3rem', fontWeight: 600, margin: '18px 0 0 0', textAlign: 'center', fontFamily: 'var(--font-inter)' }}>{member.name}</h2>
-              <p style={{ color: '#B0B3C7', fontSize: '1.05rem', marginTop: 4, textAlign: 'center', fontFamily: 'var(--font-inter)' }}>{member.title}</p>
+              <h2 style={{ color: 'white', fontSize: 'clamp(1.1rem, 3vw, 1.3rem)', fontWeight: 600, margin: '18px 0 0 0', textAlign: 'center', fontFamily: 'var(--font-inter)' }}>{member.name}</h2>
+              <p style={{ color: '#B0B3C7', fontSize: 'clamp(0.9rem, 2.5vw, 1.05rem)', marginTop: 4, textAlign: 'center', fontFamily: 'var(--font-inter)' }}>{member.title}</p>
             </div>
           ))}
         </div>
       </main>
       {/* Our Advisors Section */}
       <section style={{ maxWidth: 1400, margin: '56px auto 0 auto', padding: '0 24px 64px 24px', fontFamily: 'var(--font-inter)' }}>
-        <h2 style={{ color: 'white', fontSize: '2rem', fontWeight: 600, marginBottom: 18, marginTop: 0, letterSpacing: 0.5 }}>OUR ADVISORS</h2>
+        <h2 style={{ color: 'white', fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: 600, marginBottom: 18, marginTop: 0, letterSpacing: 0.5 }}>OUR ADVISORY BOARD</h2>
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: `repeat(${Math.ceil(advisors.length / 2)}, 1fr)`,
-            gridTemplateRows: 'repeat(2, auto)',
-            gap: '2.5rem 0',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '2.5rem',
             color: 'white',
             fontFamily: 'var(--font-inter)',
             width: '100%',
           }}
         >
-          {advisors.map((advisor, idx) => (
-            <div key={advisor._id} style={{ marginBottom: 0, gridRow: idx < Math.ceil(advisors.length / 2) ? 1 : 2 }}>
+          {advisors.map((advisor) => (
+            <div key={advisor._id} style={{ marginBottom: 0 }}>
               {advisor.linkedinUrl ? (
                 <a
                   href={advisor.linkedinUrl}
@@ -182,7 +181,7 @@ export default function TeamPageClient({ team, advisors }: { team: TeamMember[];
                   style={{
                     color: 'white',
                     fontWeight: 700,
-                    fontSize: '1rem',
+                    fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
                     textDecoration: 'none',
                     transition: 'border-bottom 0.2s',
                     borderBottom: '2px solid transparent',
@@ -195,9 +194,9 @@ export default function TeamPageClient({ team, advisors }: { team: TeamMember[];
                   {advisor.name}
                 </a>
               ) : (
-                <span style={{ color: 'white', fontWeight: 700, fontSize: '1rem' }}>{advisor.name}</span>
+                <span style={{ color: 'white', fontWeight: 700, fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>{advisor.name}</span>
               )}
-              <div style={{ color: '#B0B3C7', fontWeight: 400, fontSize: '0.92rem', marginTop: 2 }}>{advisor.title}</div>
+              <div style={{ color: '#B0B3C7', fontWeight: 400, fontSize: 'clamp(0.8rem, 2.2vw, 0.92rem)', marginTop: 2 }}>{advisor.title}</div>
             </div>
           ))}
         </div>
@@ -220,36 +219,51 @@ export default function TeamPageClient({ team, advisors }: { team: TeamMember[];
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontFamily: 'var(--font-inter)'
+            fontFamily: 'var(--font-inter)',
+            padding: '20px'
           }}
         >
           <div
             onClick={e => e.stopPropagation()}
+            className="team-modal-container"
             style={{
               background: '#23263a',
               borderRadius: 24,
               boxShadow: '0 4px 32px 0 rgba(0,0,0,0.25)',
-              width: 'min(1100px, 98vw)',
-              height: '720px',
-              minHeight: 500,
-              maxHeight: 720,
+              width: 'min(950px, 96vw)',
+              height: 'min(650px, 87vh)',
+              minHeight: 450,
+              maxHeight: 650,
               display: 'flex',
+              flexDirection: 'row',
               overflow: 'hidden',
               position: 'relative',
               fontFamily: 'var(--font-inter)'
             }}
           >
             {/* Left: Image */}
-            <div style={{ flex: 1, background: '#181a28', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '32px 0', minWidth: 0 }}>
+            <div 
+              className="team-modal-image"
+              style={{ 
+                flex: '0 0 45%',
+                background: '#181a28', 
+                display: 'flex', 
+                flexDirection: 'column', 
+                alignItems: 'center', 
+                justifyContent: 'center', 
+                padding: '32px 0', 
+                minWidth: 0 
+              }}
+            >
               {selected.image && (
                 <img
                   src={urlFor(selected.image)?.width(520).height(520).fit('crop').url() || ''}
                   alt={selected.name}
                   style={{
                     width: '85%',
-                    height: '100%',
+                    height: 'auto',
                     maxWidth: 380,
-                    maxHeight: 480,
+                    maxHeight: '45vh',
                     aspectRatio: '4/5',
                     objectFit: 'cover',
                     borderRadius: 28,
@@ -303,7 +317,7 @@ export default function TeamPageClient({ team, advisors }: { team: TeamMember[];
                         display: 'flex',
                         alignItems: 'center',
                         fontWeight: 500,
-                        fontSize: '1.08rem',
+                        fontSize: 'clamp(0.9rem, 2.5vw, 1.08rem)',
                         letterSpacing: 0.5,
                         boxShadow: '0 1px 4px 0 rgba(0,0,0,0.07)',
                         fontFamily: 'var(--font-inter)'
@@ -320,7 +334,7 @@ export default function TeamPageClient({ team, advisors }: { team: TeamMember[];
                         display: 'flex',
                         alignItems: 'center',
                         fontWeight: 500,
-                        fontSize: '1.08rem',
+                        fontSize: 'clamp(0.9rem, 2.5vw, 1.08rem)',
                         letterSpacing: 0.5,
                         boxShadow: '0 1px 4px 0 rgba(0,0,0,0.07)',
                         fontFamily: 'var(--font-inter)'
@@ -329,10 +343,21 @@ export default function TeamPageClient({ team, advisors }: { team: TeamMember[];
               </div>
             </div>
             {/* Right: Bio */}
-            <div style={{ flex: 1, padding: '2.5rem 2rem', overflowY: 'auto', color: 'white', height: '100%', minWidth: 0, fontFamily: 'var(--font-inter)' }}>
-              <h2 style={{ fontSize: '2rem', fontWeight: 700, margin: 0, fontFamily: 'var(--font-inter)' }}>{selected.name}</h2>
-              <p style={{ color: '#B0B3C7', fontSize: '1.1rem', margin: '8px 0 24px 0', fontFamily: 'var(--font-inter)' }}>{selected.title}</p>
-              <div style={{ fontSize: '1.08rem', lineHeight: 1.7, whiteSpace: 'pre-line', fontFamily: 'var(--font-inter)' }}>{selected.bio}</div>
+            <div 
+              className="team-modal-bio"
+              style={{ 
+                flex: 1,
+                padding: 'clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 3vw, 2rem)', 
+                overflowY: 'auto', 
+                color: 'white', 
+                height: '100%', 
+                minWidth: 0, 
+                fontFamily: 'var(--font-inter)' 
+              }}
+            >
+              <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: 700, margin: 0, fontFamily: 'var(--font-inter)' }}>{selected.name}</h2>
+              <p style={{ color: '#B0B3C7', fontSize: 'clamp(1rem, 2.5vw, 1.1rem)', margin: '8px 0 24px 0', fontFamily: 'var(--font-inter)' }}>{selected.title}</p>
+              <div style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.08rem)', lineHeight: 1.7, whiteSpace: 'pre-line', fontFamily: 'var(--font-inter)', textAlign: 'justify' }}>{selected.bio}</div>
             </div>
             {/* Close button */}
             <button
@@ -362,6 +387,71 @@ export default function TeamPageClient({ team, advisors }: { team: TeamMember[];
           </div>
         </div>
       )}
+
+      <style jsx global>{`
+        /* Responsive breakpoints for modal layout */
+        @media (max-width: 768px) {
+          .team-modal-container {
+            flex-direction: column !important;
+            height: auto !important;
+            min-height: auto !important;
+            max-height: 90vh !important;
+          }
+          .team-modal-image {
+            flex: 0 0 auto !important;
+            height: auto !important;
+            padding: 20px 0 !important;
+          }
+          .team-modal-bio {
+            flex: 1 !important;
+            height: auto !important;
+            padding: 20px !important;
+          }
+        }
+        
+        @media (max-width: 1024px) {
+          .team-modal-container {
+            width: 95vw !important;
+            height: auto !important;
+            min-height: auto !important;
+            max-height: 90vh !important;
+          }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1200px) {
+          .team-modal-container {
+            flex-direction: column !important;
+            height: auto !important;
+            min-height: auto !important;
+            max-height: 90vh !important;
+          }
+          .team-modal-image {
+            flex: 0 0 auto !important;
+            height: auto !important;
+            padding: 20px 0 !important;
+          }
+          .team-modal-bio {
+            flex: 1 !important;
+            height: auto !important;
+            padding: 20px !important;
+          }
+        }
+        
+        @media (min-width: 1201px) {
+          .team-modal-container {
+            flex-direction: row !important;
+            height: min(650px, 87vh) !important;
+          }
+          .team-modal-image {
+            flex: 0 0 45% !important;
+            height: 100% !important;
+          }
+          .team-modal-bio {
+            flex: 1 !important;
+            height: 100% !important;
+          }
+        }
+      `}</style>
     </div>
   );
 } 

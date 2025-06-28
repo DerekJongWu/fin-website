@@ -47,9 +47,9 @@ export default function PostsPageClient({ posts }: { posts: Post[] }) {
     <div style={{ background: '#1E2332', minHeight: '100vh', width: '100vw', fontFamily: 'var(--font-inter)' }}>
       <PortfolioHeader />
       <main style={{ maxWidth: 1400, margin: '0 auto', padding: '50px 24px 48px 24px', minHeight: '80vh' }}>
-        <h1 style={{ color: 'white', fontSize: '2.5rem', fontWeight: 700, marginBottom: 40, fontFamily: 'var(--font-inter)' }}>News & Insights</h1>
+        <h1 style={{ color: 'white', fontSize: 'clamp(2rem, 5vw, 2.5rem)', fontWeight: 700, marginBottom: 40, fontFamily: 'var(--font-inter)' }}>News & Insights</h1>
         {/* Filter Bar */}
-        <div style={{ display: 'flex', gap: 32, alignItems: 'center', marginBottom: 24, borderBottom: '1px solid #3A4060', paddingBottom: 8 }}>
+        <div style={{ display: 'flex', gap: 'clamp(16px, 4vw, 32px)', alignItems: 'center', marginBottom: 24, borderBottom: '1px solid #3A4060', paddingBottom: 8, flexWrap: 'wrap' }}>
           {FILTERS.map(filter => (
             <button
               key={filter.value}
@@ -59,13 +59,14 @@ export default function PostsPageClient({ posts }: { posts: Post[] }) {
                 border: 'none',
                 color: 'white',
                 fontWeight: activeFilter === filter.value ? 700 : 500,
-                fontSize: '1.15rem',
+                fontSize: 'clamp(1rem, 2.5vw, 1.15rem)',
                 cursor: 'pointer',
                 borderBottom: activeFilter === filter.value ? '3px solid #FFD700' : '3px solid transparent',
                 padding: '0 0 8px 0',
                 outline: 'none',
                 fontFamily: 'var(--font-inter)',
                 transition: 'border 0.2s, color 0.2s',
+                whiteSpace: 'nowrap',
               }}
             >
               {filter.label}
@@ -75,26 +76,41 @@ export default function PostsPageClient({ posts }: { posts: Post[] }) {
         {/* Featured Section */}
         {activeFilter === "all" && featuredPosts.length > 0 && (
           <section style={{ marginBottom: 60 }}>
-            <h2 style={{ color: 'white', fontSize: '1.8rem', fontWeight: 600, marginBottom: 24, fontFamily: 'var(--font-inter)' }}>Featured</h2>
+            <h2 style={{ color: 'white', fontSize: 'clamp(1.5rem, 4vw, 1.8rem)', fontWeight: 600, marginBottom: 24, fontFamily: 'var(--font-inter)' }}>Featured</h2>
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(4, 1fr)',
-                gridAutoRows: '180px',
-                gap: '24px',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gridAutoRows: 'clamp(160px, 25vw, 180px)',
+                gap: 'clamp(16px, 3vw, 24px)',
                 gridAutoFlow: 'dense',
               }}
             >
               {featuredPosts.map((post, idx) => {
-                // Dynamic quilt pattern: cycle through a pattern of spans
-                // Pattern: [2x2, 2x1, 1x2, 1x1, 1x1, ...]
-                const quiltPattern = [
-                  { gridColumn: 'span 2', gridRow: 'span 2' },
-                  { gridColumn: 'span 2', gridRow: 'span 1' },
-                  { gridColumn: 'span 1', gridRow: 'span 2' },
-                  { gridColumn: 'span 1', gridRow: 'span 1' },
-                  { gridColumn: 'span 1', gridRow: 'span 1' },
-                ];
+                // Responsive quilt pattern: simpler on mobile, complex on desktop
+                const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+                let quiltPattern;
+                
+                if (isMobile) {
+                  // On mobile, all cards are the same size
+                  quiltPattern = [
+                    { gridColumn: 'span 1', gridRow: 'span 1' },
+                    { gridColumn: 'span 1', gridRow: 'span 1' },
+                    { gridColumn: 'span 1', gridRow: 'span 1' },
+                    { gridColumn: 'span 1', gridRow: 'span 1' },
+                    { gridColumn: 'span 1', gridRow: 'span 1' },
+                  ];
+                } else {
+                  // On desktop, use the original quilt pattern
+                  quiltPattern = [
+                    { gridColumn: 'span 2', gridRow: 'span 2' },
+                    { gridColumn: 'span 2', gridRow: 'span 1' },
+                    { gridColumn: 'span 1', gridRow: 'span 2' },
+                    { gridColumn: 'span 1', gridRow: 'span 1' },
+                    { gridColumn: 'span 1', gridRow: 'span 1' },
+                  ];
+                }
+                
                 const pattern = quiltPattern[idx % quiltPattern.length];
                 const gridColumn = pattern.gridColumn;
                 const gridRow = pattern.gridRow;
@@ -104,7 +120,7 @@ export default function PostsPageClient({ posts }: { posts: Post[] }) {
                     style={{
                       background: getCardBg(post.postType),
                       borderRadius: 16,
-                      padding: '24px',
+                      padding: 'clamp(16px, 3vw, 24px)',
                       border: '1px solid rgba(255,255,255,0.1)',
                       transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                       cursor: 'pointer',
@@ -130,13 +146,13 @@ export default function PostsPageClient({ posts }: { posts: Post[] }) {
                     {/* Top right: Badge */}
                     <span style={{
                       position: 'absolute',
-                      top: 16,
-                      right: 20,
+                      top: 'clamp(12px, 2vw, 16px)',
+                      right: 'clamp(16px, 3vw, 20px)',
                       background: 'rgba(255,255,255,0.85)',
                       color: '#23263a',
                       borderRadius: 8,
-                      padding: '2px 12px',
-                      fontSize: '0.95rem',
+                      padding: '2px clamp(8px, 2vw, 12px)',
+                      fontSize: 'clamp(0.8rem, 2.2vw, 0.95rem)',
                       fontWeight: 500,
                       zIndex: 2,
                       boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
@@ -166,8 +182,8 @@ export default function PostsPageClient({ posts }: { posts: Post[] }) {
                         background: 'rgba(30,35,50,0.75)',
                         color: 'white',
                         fontWeight: 700,
-                        fontSize: '1.1rem',
-                        padding: '16px 20px 12px 20px',
+                        fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)',
+                        padding: 'clamp(12px, 2.5vw, 16px) clamp(16px, 3vw, 20px) clamp(8px, 2vw, 12px) clamp(16px, 3vw, 20px)',
                         borderBottomLeftRadius: 16,
                         borderBottomRightRadius: 16,
                         textShadow: '0 2px 8px rgba(0,0,0,0.18)',
@@ -185,17 +201,17 @@ export default function PostsPageClient({ posts }: { posts: Post[] }) {
         )}
         {/* Regular Posts Grid */}
         <section>
-          <h2 style={{ color: 'white', fontSize: '1.8rem', fontWeight: 600, marginBottom: 24, fontFamily: 'var(--font-inter)' }}>All Articles</h2>
+          <h2 style={{ color: 'white', fontSize: 'clamp(1.5rem, 4vw, 1.8rem)', fontWeight: 600, marginBottom: 24, fontFamily: 'var(--font-inter)' }}>All Articles</h2>
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-            gap: '24px'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: 'clamp(16px, 3vw, 24px)'
           }}>
             {gridPosts.map((post) => (
               <div key={post._id} style={{
                 background: getCardBg(post.postType),
                 borderRadius: 16,
-                padding: '24px',
+                padding: 'clamp(16px, 3vw, 24px)',
                 border: '1px solid rgba(255,255,255,0.1)',
                 transition: 'transform 0.2s ease-in-out',
                 cursor: 'pointer',
@@ -207,8 +223,8 @@ export default function PostsPageClient({ posts }: { posts: Post[] }) {
                   target={post.newslink ? "_blank" : undefined}
                   rel={post.newslink ? "noopener noreferrer" : undefined}
                 >
-                  <h2 style={{ color: 'white', fontSize: '1.3rem', fontWeight: 600, marginBottom: 8, fontFamily: 'var(--font-inter)' }}>{post.title}</h2>
-                  <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.05rem', fontFamily: 'var(--font-inter)' }}>{new Date(post.publishedAt).toLocaleDateString()}</p>
+                  <h2 style={{ color: 'white', fontSize: 'clamp(1.1rem, 3vw, 1.3rem)', fontWeight: 600, marginBottom: 8, fontFamily: 'var(--font-inter)' }}>{post.title}</h2>
+                  <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 'clamp(0.9rem, 2.5vw, 1.05rem)', fontFamily: 'var(--font-inter)' }}>{new Date(post.publishedAt).toLocaleDateString()}</p>
                 </Link>
               </div>
             ))}
@@ -216,6 +232,35 @@ export default function PostsPageClient({ posts }: { posts: Post[] }) {
         </section>
       </main>
       <Footer />
+
+      <style jsx global>{`
+        /* Responsive breakpoints for featured posts quilt pattern */
+        @media (min-width: 768px) {
+          .featured-grid {
+            grid-template-columns: repeat(4, 1fr) !important;
+          }
+          .featured-grid > div:nth-child(1) {
+            grid-column: span 2 !important;
+            grid-row: span 2 !important;
+          }
+          .featured-grid > div:nth-child(2) {
+            grid-column: span 2 !important;
+            grid-row: span 1 !important;
+          }
+          .featured-grid > div:nth-child(3) {
+            grid-column: span 1 !important;
+            grid-row: span 2 !important;
+          }
+          .featured-grid > div:nth-child(4) {
+            grid-column: span 1 !important;
+            grid-row: span 1 !important;
+          }
+          .featured-grid > div:nth-child(5) {
+            grid-column: span 1 !important;
+            grid-row: span 1 !important;
+          }
+        }
+      `}</style>
     </div>
   );
 } 

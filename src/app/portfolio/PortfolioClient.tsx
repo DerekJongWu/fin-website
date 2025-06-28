@@ -97,7 +97,7 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
           style={{
             color: '#FFD700',
             fontWeight: '600',
-            fontSize: '1.1rem',
+            fontSize: 'clamp(1rem, 2.5vw, 1.1rem)',
             cursor: 'pointer',
             userSelect: 'none',
             padding: '6px 18px',
@@ -117,65 +117,44 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
           background: '#23263a',
           borderRadius: 18,
           boxShadow: '0 2px 16px 0 rgba(0,0,0,0.10)',
-          padding: '24px 32px',
+          padding: 'clamp(20px, 4vw, 24px) clamp(20px, 4vw, 32px)',
           marginBottom: 32,
           display: 'grid',
-          gridTemplateColumns: '2fr 0.7fr 0.7fr',
-          gap: 24,
+          gridTemplateColumns: '1fr',
+          gap: 'clamp(20px, 4vw, 24px)',
           width: '100%',
           alignItems: 'flex-start',
           fontFamily: 'var(--font-inter)'
         }}>
           {/* Thesis */}
           <div style={{ minWidth: 220 }}>
-            <div style={{ color: '#FFD700', fontWeight: 600, marginBottom: 10, fontFamily: 'var(--font-inter)' }}>Sub-sector</div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }}>
-              {/* Add marginLeft to the second column */}
-              <style>{`
-                .thesis-col-1 { margin-left: 0; }
-                .thesis-col-2 { margin-left: 24px; }
-              `}</style>
-              {(() => {
-                const colCount = 2;
-                const rowCount = Math.ceil(allTheses.length / colCount);
-                const columns = Array.from({ length: colCount }, (_, colIdx) =>
-                  allTheses.slice(colIdx * rowCount, (colIdx + 1) * rowCount)
-                );
-                return Array.from({ length: rowCount }, (_, rowIdx) => (
-                  <React.Fragment key={rowIdx}>
-                    {columns.map((col, colIdx) => {
-                      const thesis = col[rowIdx];
-                      if (!thesis) return <div key={colIdx} />;
-                      return (
-                        <label
-                          key={thesis}
-                          className={`thesis-col-${colIdx + 1}`}
-                          style={{ display: 'block', color: 'white', marginBottom: 6, cursor: 'pointer', fontFamily: 'var(--font-inter)' }}
-                        >
-                          <input
-                            type="checkbox"
-                            checked={selectedTheses.includes(thesis)}
-                            onChange={e => setSelectedTheses(
-                              e.target.checked
-                                ? [...selectedTheses, thesis]
-                                : selectedTheses.filter(t => t !== thesis)
-                            )}
-                            style={{ marginRight: 8 }}
-                          />
-                          {thesis}
-                        </label>
-                      );
-                    })}
-                  </React.Fragment>
-                ));
-              })()}
+            <div style={{ color: '#FFD700', fontWeight: 600, marginBottom: 10, fontFamily: 'var(--font-inter)', fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>Sub-sector</div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'clamp(8px, 2vw, 12px)' }}>
+              {allTheses.map(thesis => (
+                <label
+                  key={thesis}
+                  style={{ display: 'block', color: 'white', marginBottom: 6, cursor: 'pointer', fontFamily: 'var(--font-inter)', fontSize: 'clamp(0.85rem, 2.2vw, 0.95rem)' }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={selectedTheses.includes(thesis)}
+                    onChange={e => setSelectedTheses(
+                      e.target.checked
+                        ? [...selectedTheses, thesis]
+                        : selectedTheses.filter(t => t !== thesis)
+                    )}
+                    style={{ marginRight: 8 }}
+                  />
+                  {thesis}
+                </label>
+              ))}
             </div>
           </div>
           {/* Stage */}
           <div style={{ minWidth: 160 }}>
-            <div style={{ color: '#FFD700', fontWeight: 600, marginBottom: 10, fontFamily: 'var(--font-inter)' }}>Stage</div>
+            <div style={{ color: '#FFD700', fontWeight: 600, marginBottom: 10, fontFamily: 'var(--font-inter)', fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>Stage</div>
             {allStages.map(stage => (
-              <label key={stage} style={{ display: 'block', color: 'white', marginBottom: 6, cursor: 'pointer', fontFamily: 'var(--font-inter)' }}>
+              <label key={stage} style={{ display: 'block', color: 'white', marginBottom: 6, cursor: 'pointer', fontFamily: 'var(--font-inter)', fontSize: 'clamp(0.85rem, 2.2vw, 0.95rem)' }}>
                 <input
                   type="checkbox"
                   checked={selectedStages.includes(stage)}
@@ -191,10 +170,10 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
             ))}
           </div>
           {/* Status */}
-          <div style={{ minWidth: 160, justifySelf: 'end' }}>
-            <div style={{ color: '#FFD700', fontWeight: 600, marginBottom: 10, fontFamily: 'var(--font-inter)' }}>Status</div>
+          <div style={{ minWidth: 160 }}>
+            <div style={{ color: '#FFD700', fontWeight: 600, marginBottom: 10, fontFamily: 'var(--font-inter)', fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>Status</div>
             {allStatuses.map(status => (
-              <label key={status} style={{ display: 'block', color: 'white', marginBottom: 6, cursor: 'pointer', fontFamily: 'var(--font-inter)' }}>
+              <label key={status} style={{ display: 'block', color: 'white', marginBottom: 6, cursor: 'pointer', fontFamily: 'var(--font-inter)', fontSize: 'clamp(0.85rem, 2.2vw, 0.95rem)' }}>
                 <input
                   type="checkbox"
                   checked={selectedStatuses.includes(status)}
@@ -214,10 +193,10 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)", // 4 columns
-          gap: "2.5rem",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: "clamp(1.5rem, 4vw, 2.5rem)",
           justifyItems: "center",
-          padding: "0 2.5rem",
+          padding: "0 clamp(1rem, 4vw, 2.5rem)",
           maxWidth: "1400px",
           margin: "0 auto",
         }}
@@ -259,7 +238,7 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
                     background: '#FFD700',
                     color: '#23263a',
                     fontWeight: 600,
-                    fontSize: '1rem',
+                    fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
                     borderRadius: 14,
                     padding: '4px 18px',
                     boxShadow: '0 2px 10px 0 rgba(0,0,0,0.13)',
@@ -307,7 +286,7 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
                 alignItems: 'flex-start',
                 justifyContent: 'flex-start',
                 pointerEvents: hovered === company.name ? 'auto' : 'none',
-                padding: '24px 24px 12px 24px',
+                padding: 'clamp(16px, 4vw, 24px) clamp(16px, 4vw, 24px) clamp(8px, 2vw, 12px) clamp(16px, 4vw, 24px)',
               }}
               onMouseEnter={() => setHovered(company.name)}
               onMouseLeave={() => setHovered(null)}
@@ -354,22 +333,22 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
                       }
                     `}</style>
                     <div className="hover-panel-scroll" style={{ width: '100%' }}>
-                      <div style={{ fontWeight: 700, fontSize: '1.08rem', marginBottom: 4 }}>
+                      <div style={{ fontWeight: 700, fontSize: 'clamp(0.9rem, 2.5vw, 1.08rem)', marginBottom: 4 }}>
                         Sub-sector:
                       </div>
-                      <div style={{ fontSize: '0.75rem', fontWeight: 400, marginBottom: 18, color: '#1E2332', opacity: 0.85 }}>
+                      <div style={{ fontSize: 'clamp(0.7rem, 2vw, 0.75rem)', fontWeight: 400, marginBottom: 18, color: '#1E2332', opacity: 0.85 }}>
                         {company.thesis || 'No thesis available.'}
                       </div>
-                      <div style={{ fontWeight: 700, fontSize: '1.08rem', marginBottom: 4 }}>
+                      <div style={{ fontWeight: 700, fontSize: 'clamp(0.9rem, 2.5vw, 1.08rem)', marginBottom: 4 }}>
                         Stage:
                       </div>
-                      <div style={{ fontSize: '0.75rem', fontWeight: 400, color: '#1E2332', opacity: 0.85, marginBottom: 18 }}>
+                      <div style={{ fontSize: 'clamp(0.7rem, 2vw, 0.75rem)', fontWeight: 400, color: '#1E2332', opacity: 0.85, marginBottom: 18 }}>
                         {stageText}
                       </div>
-                      <div style={{ fontWeight: 700, fontSize: '1.08rem', marginBottom: 4 }}>
+                      <div style={{ fontWeight: 700, fontSize: 'clamp(0.9rem, 2.5vw, 1.08rem)', marginBottom: 4 }}>
                         Description:
                       </div>
-                      <div style={{ fontSize: '0.75rem', fontWeight: 400, color: '#1E2332', opacity: 0.85 }}>
+                      <div style={{ fontSize: 'clamp(0.7rem, 2vw, 0.75rem)', fontWeight: 400, color: '#1E2332', opacity: 0.85 }}>
                         {company.description || 'No description available.'}
                       </div>
                     </div>
@@ -397,6 +376,7 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            padding: '20px'
           }}
         >
           <div
@@ -406,44 +386,80 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
               borderRadius: 24,
               boxShadow: '0 4px 32px 0 rgba(0,0,0,0.25)',
               width: 'min(1100px, 98vw)',
-              height: '550px',
+              height: 'min(550px, 90vh)',
               minHeight: 500,
               maxHeight: 720,
               display: 'flex',
+              flexDirection: 'column',
               overflow: 'hidden',
               position: 'relative',
               fontFamily: 'var(--font-inter)'
             }}
           >
-            {/* Left: Logo */}
-            <div style={{ flex: 1.3, background: '#181a28', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '32px 0', minWidth: 0 }}>
-              <a href={selected.website} target="_blank" rel="noopener noreferrer" style={{ width: '90%', maxWidth: 320, display: 'block', margin: '0 auto' }}>
-                <img
-                  src={selected.logoUrl}
-                  alt={selected.name + " logo"}
-                  style={{
-                    width: '100%',
-                    maxWidth: 320,
-                    maxHeight: 320,
-                    objectFit: 'contain',
-                    borderRadius: 20,
-                    background: '#fff',
-                    boxShadow: '0 2px 20px 0 rgba(0,0,0,0.10)',
-                    display: 'block',
-                  }}
-                />
-              </a>
-              {/* Fund Tag(s) */}
-              <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap', marginLeft: 0, width: '90%', maxWidth: 320 }}>
-                {(() => {
-                  const fund = (selected.fund || '').toLowerCase();
-                  const tags = [];
-                  if (fund.includes('regatta') || fund.includes('flagship')) tags.push('Early');
-                  if (fund.includes('horizons')) tags.push('Growth');
-                  return tags.length > 0 ? tags.map((tag, idx) => (
-                    <span key={idx} style={{
-                      background: '#F5F6F8',
-                      color: '#1E2332',
+            {/* Mobile: Stacked layout, Desktop: Side by side */}
+            <div style={{ 
+              display: 'flex', 
+              flexDirection: 'column',
+              height: '100%',
+              overflow: 'hidden'
+            }}>
+              {/* Left: Logo */}
+              <div style={{ 
+                flex: '0 0 auto',
+                background: '#181a28', 
+                display: 'flex', 
+                flexDirection: 'column', 
+                alignItems: 'center', 
+                justifyContent: 'center', 
+                padding: 'clamp(20px, 4vw, 32px) 0', 
+                minWidth: 0 
+              }}>
+                <a href={selected.website} target="_blank" rel="noopener noreferrer" style={{ width: '90%', maxWidth: 320, display: 'block', margin: '0 auto' }}>
+                  <img
+                    src={selected.logoUrl}
+                    alt={selected.name + " logo"}
+                    style={{
+                      width: '100%',
+                      maxWidth: 320,
+                      maxHeight: '40vh',
+                      objectFit: 'contain',
+                      borderRadius: 20,
+                      background: '#fff',
+                      boxShadow: '0 2px 20px 0 rgba(0,0,0,0.10)',
+                      display: 'block',
+                    }}
+                  />
+                </a>
+                {/* Fund Tag(s) */}
+                <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap', justifyContent: 'center', width: '90%', maxWidth: 320 }}>
+                  {(() => {
+                    const fund = (selected.fund || '').toLowerCase();
+                    const tags = [];
+                    if (fund.includes('regatta') || fund.includes('flagship')) tags.push('Early');
+                    if (fund.includes('horizons')) tags.push('Growth');
+                    return tags.length > 0 ? tags.map((tag, idx) => (
+                      <span key={idx} style={{
+                        background: '#F5F6F8',
+                        color: '#1E2332',
+                        borderRadius: 14,
+                        padding: '0 18px',
+                        height: 48,
+                        minWidth: 48,
+                        display: 'flex',
+                        alignItems: 'center',
+                        fontWeight: 500,
+                        fontSize: 'clamp(0.9rem, 2.5vw, 1.08rem)',
+                        letterSpacing: 0.5,
+                        boxShadow: '0 1px 4px 0 rgba(0,0,0,0.07)',
+                        fontFamily: 'var(--font-inter)'
+                      }}>{tag}</span>
+                    )) : null;
+                  })()}
+                  {/* Thesis Bubble */}
+                  {selected.thesis && (
+                    <span style={{
+                      background: '#FFD700',
+                      color: '#23263a',
                       borderRadius: 14,
                       padding: '0 18px',
                       height: 48,
@@ -451,37 +467,30 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
                       display: 'flex',
                       alignItems: 'center',
                       fontWeight: 500,
-                      fontSize: '1.08rem',
+                      fontSize: 'clamp(0.9rem, 2.5vw, 1.08rem)',
                       letterSpacing: 0.5,
                       boxShadow: '0 1px 4px 0 rgba(0,0,0,0.07)',
                       fontFamily: 'var(--font-inter)'
-                    }}>{tag}</span>
-                  )) : null;
-                })()}
-                {/* Thesis Bubble */}
-                {selected.thesis && (
-                  <span style={{
-                    background: '#FFD700',
-                    color: '#23263a',
-                    borderRadius: 14,
-                    padding: '0 18px',
-                    height: 48,
-                    minWidth: 48,
-                    display: 'flex',
-                    alignItems: 'center',
-                    fontWeight: 500,
-                    fontSize: '1.08rem',
-                    letterSpacing: 0.5,
-                    boxShadow: '0 1px 4px 0 rgba(0,0,0,0.07)',
-                    fontFamily: 'var(--font-inter)'
-                  }}>{selected.thesis}</span>
-                )}
+                    }}>{selected.thesis}</span>
+                  )}
+                </div>
               </div>
-            </div>
-            {/* Right: Description */}
-            <div style={{ flex: 1.7, padding: '2.5rem 2rem', overflowY: 'auto', color: 'white', height: '100%', minWidth: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', fontFamily: 'var(--font-inter)' }}>
-              <h2 style={{ fontSize: '2rem', fontWeight: '700', margin: 0, fontFamily: 'var(--font-inter)' }}>{selected.name}</h2>
-              <div style={{ fontSize: '1.08rem', lineHeight: 1.7, whiteSpace: 'pre-line', marginTop: 16, fontFamily: 'var(--font-inter)' }}>{selected.description}</div>
+              {/* Right: Description */}
+              <div style={{ 
+                flex: 1,
+                padding: 'clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 3vw, 2rem)', 
+                overflowY: 'auto', 
+                color: 'white', 
+                height: '100%', 
+                minWidth: 0, 
+                display: 'flex', 
+                flexDirection: 'column', 
+                justifyContent: 'center', 
+                fontFamily: 'var(--font-inter)' 
+              }}>
+                <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: '700', margin: 0, fontFamily: 'var(--font-inter)' }}>{selected.name}</h2>
+                <div style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.08rem)', lineHeight: 1.7, whiteSpace: 'pre-line', marginTop: 16, fontFamily: 'var(--font-inter)' }}>{selected.description}</div>
+              </div>
             </div>
             {/* Close button */}
             <button
@@ -510,6 +519,30 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
           </div>
         </div>
       )}
+
+      <style jsx global>{`
+        /* Responsive breakpoints for filter panel */
+        @media (min-width: 768px) {
+          .filter-panel {
+            grid-template-columns: 2fr 0.7fr 0.7fr !important;
+          }
+        }
+
+        /* Responsive breakpoints for modal layout */
+        @media (min-width: 768px) {
+          .modal-content {
+            flex-direction: row !important;
+          }
+          .modal-logo {
+            flex: 1.3 !important;
+            height: 100% !important;
+          }
+          .modal-description {
+            flex: 1.7 !important;
+            height: 100% !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

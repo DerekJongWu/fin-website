@@ -31,7 +31,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
       {/* Hero Text */}
       <h1 style={{ 
         color: 'white', 
-        fontSize: '3.5rem', 
+        fontSize: 'clamp(2rem, 5vw, 3.5rem)', 
         fontWeight: 700, 
         marginBottom: 40, 
         fontFamily: 'var(--font-inter)',
@@ -47,7 +47,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 40 }}>
           <h2 style={{
             color: 'white',
-            fontSize: '2.5rem',
+            fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
             fontWeight: 600,
             marginBottom: 24,
             textAlign: 'left',
@@ -60,7 +60,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
         <div>
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(5, 1fr)',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
             gap: '24px',
             margin: '0 auto',
             position: 'relative'
@@ -70,7 +70,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
               background: 'rgba(255,255,255,0.03)',
               borderRadius: 16,
               padding: '24px',
-              height: '180px',
+              minHeight: '180px',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
@@ -106,7 +106,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
               background: 'rgba(255,255,255,0.03)',
               borderRadius: 16,
               padding: '24px',
-              height: '180px',
+              minHeight: '180px',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
@@ -142,7 +142,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
               background: 'rgba(255,255,255,0.03)',
               borderRadius: 16,
               padding: '24px',
-              height: '180px',
+              minHeight: '180px',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
@@ -179,7 +179,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
               background: 'rgba(255,255,255,0.03)',
               borderRadius: 16,
               padding: '24px',
-              height: '180px',
+              minHeight: '180px',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
@@ -215,7 +215,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
               background: 'rgba(255,255,255,0.03)',
               borderRadius: 16,
               padding: '24px',
-              height: '180px',
+              minHeight: '180px',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
@@ -269,7 +269,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
               onMouseLeave={() => handleCardHover(null)}>
                 <div style={{
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(4, 1fr)',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
                   gap: '24px',
                   width: '100%',
                   maxWidth: '1400px',
@@ -280,7 +280,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
                     background: 'rgba(255,255,255,0.03)',
                     borderRadius: 16,
                     padding: '24px',
-                    height: '180px',
+                    minHeight: '180px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
@@ -315,7 +315,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
                     background: 'rgba(255,255,255,0.03)',
                     borderRadius: 16,
                     padding: '24px',
-                    height: '180px',
+                    minHeight: '180px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
@@ -348,7 +348,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
                     background: 'rgba(255,255,255,0.03)',
                     borderRadius: 16,
                     padding: '24px',
-                    height: '180px',
+                    minHeight: '180px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
@@ -378,7 +378,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
                     background: 'rgba(255,255,255,0.03)',
                     borderRadius: 16,
                     padding: '24px',
-                    height: '180px',
+                    minHeight: '180px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
@@ -415,7 +415,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
                     background: 'rgba(255,255,255,0.03)',
                     borderRadius: 16,
                     padding: '24px',
-                    height: '180px',
+                    minHeight: '180px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
@@ -449,7 +449,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
                     background: 'rgba(255,255,255,0.03)',
                     borderRadius: 16,
                     padding: '24px',
-                    height: '180px',
+                    minHeight: '180px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
@@ -480,7 +480,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
                     background: 'rgba(255,255,255,0.03)',
                     borderRadius: 16,
                     padding: '24px',
-                    height: '180px',
+                    minHeight: '180px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
@@ -515,7 +515,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
                     background: 'rgba(255,255,255,0.03)',
                     borderRadius: 16,
                     padding: '24px',
-                    height: '180px',
+                    minHeight: '180px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
@@ -549,10 +549,10 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
       </section>
 
       {/* Platform Team Section */}
-      <section style={{ marginTop: 80, marginBottom: 0, display: 'flex', flexDirection: 'column', flex: 1 }}>
+      <section className="platform-team-section" style={{ marginTop: 80, marginBottom: 0, display: 'flex', flexDirection: 'column', flex: 1 }}>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1.1fr',
+          gridTemplateColumns: '1fr',
           gap: '48px',
           alignItems: 'stretch',
           borderTop: '1px solid #3A4060',
@@ -564,7 +564,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
           <div>
             <h2 style={{
               color: 'white',
-              fontSize: '2.5rem',
+              fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
               fontWeight: 600,
               marginBottom: 24,
               textAlign: 'left',
@@ -572,12 +572,12 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
             }}>
               How we add value
             </h2>
-            <div style={{ color: '#B0B3C7', fontSize: '1.25rem', lineHeight: 1.6 }}>
+            <div style={{ color: '#B0B3C7', fontSize: 'clamp(1rem, 3vw, 1.25rem)', lineHeight: 1.6 }}>
               Our team specializes in solving your most pressing challenges. We are passionate about rolling up our sleeves and partnering with founders that have deep financial services experience, audacious goals, differentiated products, and a global mindset.
             </div>
           </div>
           {/* Right column */}
-          <div className="right-scroll-panel" style={{ borderLeft: '1px solid #3A4060', paddingLeft: 32, height: '100%' }}>
+          <div className="right-scroll-panel" style={{ height: '100%' }}>
             <div style={{ direction: 'ltr' }}>
               {features.map((feature, idx) => (
                 <div 
@@ -591,7 +591,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
                       width: '100%',
                       color: 'white',
                       fontWeight: 700,
-                      fontSize: '1.25rem',
+                      fontSize: 'clamp(1rem, 3vw, 1.25rem)',
                       letterSpacing: 0.5,
                       textTransform: 'uppercase',
                       marginBottom: 8,
@@ -620,7 +620,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
                       maxHeight: openIndex === idx ? 200 : 0,
                       overflow: 'hidden',
                       color: '#B0B3C7',
-                      fontSize: '1.1rem',
+                      fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)',
                       lineHeight: 1.6,
                       transition: 'max-height 0.3s cubic-bezier(0.4,0,0.2,1)',
                       marginBottom: openIndex === idx ? 16 : 0,
@@ -705,6 +705,27 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
         
         button:hover {
           color: #FFD700 !important;
+        }
+
+        /* Responsive breakpoints */
+        @media (min-width: 768px) {
+          .right-scroll-panel {
+            border-left: 1px solid #3A4060;
+            padding-left: 32px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .platform-team-grid {
+            grid-template-columns: 1fr 1.1fr;
+          }
+        }
+
+        /* Responsive grid for "How we add value" section */
+        @media (min-width: 1024px) {
+          .platform-team-section > div {
+            grid-template-columns: 1fr 1.1fr !important;
+          }
         }
       `}</style>
     </main>

@@ -15,6 +15,7 @@ export const metadata: Metadata = {
       {
         url: "/logo.svg",
         type: "image/svg+xml",
+        sizes: "48x48",
       },
       {
         url: "/FinLogo.png",

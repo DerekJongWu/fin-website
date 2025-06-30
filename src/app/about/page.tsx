@@ -1,5 +1,4 @@
 import PortfolioHeader from '@/components/PortfolioHeader';
-import Footer from '@/components/Footer';
 import AboutPageClient from './AboutPageClient';
 import { Metadata } from 'next';
 

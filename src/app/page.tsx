@@ -68,7 +68,26 @@ export default function HomePage() {
           </div>
         </main>
       </div>
-      <Footer />
+      {/* Copyright at the bottom of the image */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          background: 'transparent',
+          color: '#fff',
+          textAlign: 'center',
+          fontSize: '0.75rem',
+          fontWeight: 400,
+          padding: '6px 0',
+          zIndex: 20,
+          letterSpacing: 0.2,
+          textShadow: '0 1px 4px rgba(0,0,0,0.25)'
+        }}
+      >
+        © {new Date().getFullYear()} Fin Capital. All rights reserved.
+      </div>
     </div>
   );
 }

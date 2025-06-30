@@ -6,7 +6,6 @@ import Link from 'next/link';
 const Footer: React.FC = () => {
   return (
     <>
-      <hr style={{ border: 'none', borderTop: '1px solid #44474f', margin: 0, width: '100%' }} />
       <footer style={{
         backgroundColor: '#1E2332',
         color: 'white',
@@ -29,39 +28,34 @@ const Footer: React.FC = () => {
             alignItems: 'center',
             gap: '2rem'
           }}>
-            {/* Address Section */}
-            <div>
-              <Link href="/contact" style={{ textDecoration: 'none', color: 'inherit' }}>
-                <h3 style={{ 
-                  fontSize: '1rem', 
-                  marginBottom: '0.25rem',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                  transition: 'opacity 0.2s ease, text-decoration 0.2s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.opacity = '0.7';
-                  e.currentTarget.style.textDecoration = 'underline';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.opacity = '1';
-                  e.currentTarget.style.textDecoration = 'none';
-                }}
-                >
-                  Contact Us
-                </h3>
+            {/* Navigation Links Section */}
+            <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+              <Link href="/contact" style={{ textDecoration: 'none', color: 'white', fontWeight: 600, fontSize: '1rem', transition: 'opacity 0.2s, text-decoration 0.2s' }}
+                onMouseEnter={e => { e.currentTarget.style.opacity = '0.7'; e.currentTarget.style.textDecoration = 'underline'; }}
+                onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.textDecoration = 'none'; }}>
+                Contact Us
               </Link>
-              <address style={{
-                fontStyle: 'normal',
-                lineHeight: '1.3',
-                fontSize: '0.85rem',
-                fontWeight: '400'
-              }}>
-                One Sansome Street<br />
-                Suite 3950<br />
-                San Francisco, CA 94104<br />
-              </address>
-            </div>
+              <Link href="/about" style={{ textDecoration: 'none', color: 'white', fontWeight: 600, fontSize: '1rem', transition: 'opacity 0.2s, text-decoration 0.2s' }}
+                onMouseEnter={e => { e.currentTarget.style.opacity = '0.7'; e.currentTarget.style.textDecoration = 'underline'; }}
+                onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.textDecoration = 'none'; }}>
+                About
+              </Link>
+              <Link href="/team" style={{ textDecoration: 'none', color: 'white', fontWeight: 600, fontSize: '1rem', transition: 'opacity 0.2s, text-decoration 0.2s' }}
+                onMouseEnter={e => { e.currentTarget.style.opacity = '0.7'; e.currentTarget.style.textDecoration = 'underline'; }}
+                onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.textDecoration = 'none'; }}>
+                Team
+              </Link>
+              <Link href="/portfolio" style={{ textDecoration: 'none', color: 'white', fontWeight: 600, fontSize: '1rem', transition: 'opacity 0.2s, text-decoration 0.2s' }}
+                onMouseEnter={e => { e.currentTarget.style.opacity = '0.7'; e.currentTarget.style.textDecoration = 'underline'; }}
+                onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.textDecoration = 'none'; }}>
+                Portfolio
+              </Link>
+              <a href="https://lighthouse.ai/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'white', fontWeight: 600, fontSize: '1rem', transition: 'opacity 0.2s, text-decoration 0.2s' }}
+                onMouseEnter={e => { e.currentTarget.style.opacity = '0.7'; e.currentTarget.style.textDecoration = 'underline'; }}
+                onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.textDecoration = 'none'; }}>
+                Lighthouse
+              </a>
+            </nav>
 
             {/* Social Media Icons */}
             <div style={{
@@ -121,6 +115,21 @@ const Footer: React.FC = () => {
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                 </svg>
+              </a>
+              {/* Bluesky */}
+              <a 
+                href="https://bsky.app/profile/fin-capital-vc.bsky.social" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{
+                  color: 'white',
+                  textDecoration: 'none',
+                  transition: 'opacity 0.2s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
+                onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+              >
+                <img src="/Bluesky_logo.svg" alt="Bluesky Logo" width={24} height={24} style={{ display: 'inline-block', verticalAlign: 'middle' }} />
               </a>
             </div>
           </div>

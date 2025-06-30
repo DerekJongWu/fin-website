@@ -40,8 +40,6 @@ export default function AboutPage() {
     <div style={{ background: '#1E2332', minHeight: '100vh', width: '100vw', fontFamily: 'var(--font-inter)' }}>
       <PortfolioHeader />
       <AboutPageClient features={features} />
-      <hr style={{ border: 'none', borderTop: '1px solid #3A4060', margin: 0 }} />
-      <Footer />
     </div>
   );
 } 

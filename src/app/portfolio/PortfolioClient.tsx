@@ -376,11 +376,13 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '20px'
+            padding: '20px',
+            fontFamily: 'var(--font-inter)'
           }}
         >
           <div
             onClick={e => e.stopPropagation()}
+            className="portfolio-modal-container"
             style={{
               background: '#23263a',
               borderRadius: 24,
@@ -390,76 +392,54 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
               minHeight: 500,
               maxHeight: 720,
               display: 'flex',
-              flexDirection: 'column',
+              flexDirection: 'row',
               overflow: 'hidden',
               position: 'relative',
               fontFamily: 'var(--font-inter)'
             }}
           >
-            {/* Mobile: Stacked layout, Desktop: Side by side */}
-            <div style={{ 
-              display: 'flex', 
-              flexDirection: 'column',
-              height: '100%',
-              overflow: 'hidden'
-            }}>
-              {/* Left: Logo */}
-              <div style={{ 
-                flex: '0 0 auto',
-                background: '#181a28', 
-                display: 'flex', 
-                flexDirection: 'column', 
-                alignItems: 'center', 
-                justifyContent: 'center', 
-                padding: 'clamp(20px, 4vw, 32px) 0', 
-                minWidth: 0 
-              }}>
-                <a href={selected.website} target="_blank" rel="noopener noreferrer" style={{ width: '90%', maxWidth: 320, display: 'block', margin: '0 auto' }}>
-                  <img
-                    src={selected.logoUrl}
-                    alt={selected.name + " logo"}
-                    style={{
-                      width: '100%',
-                      maxWidth: 320,
-                      maxHeight: '40vh',
-                      objectFit: 'contain',
-                      borderRadius: 20,
-                      background: '#fff',
-                      boxShadow: '0 2px 20px 0 rgba(0,0,0,0.10)',
-                      display: 'block',
-                    }}
-                  />
-                </a>
+            {/* Left: Logo and Tags */}
+            <div
+              className="portfolio-modal-logo"
+              style={{
+                flex: '0 0 45%',
+                background: '#181a28',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '32px 0',
+                minWidth: 0
+              }}
+            >
+              <a href={selected.website} target="_blank" rel="noopener noreferrer" style={{ width: '85%', maxWidth: 320, display: 'block', margin: '0 auto' }}>
+                <img
+                  src={selected.logoUrl}
+                  alt={selected.name + " logo"}
+                  style={{
+                    width: '100%',
+                    maxWidth: 320,
+                    maxHeight: '40vh',
+                    objectFit: 'contain',
+                    borderRadius: 20,
+                    background: '#fff',
+                    boxShadow: '0 2px 20px 0 rgba(0,0,0,0.10)',
+                    display: 'block',
+                  }}
+                />
+              </a>
+              {/* Tags under logo */}
+              <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap', justifyContent: 'flex-start', width: '85%', maxWidth: 320, marginLeft: 'auto', marginRight: 'auto' }}>
                 {/* Fund Tag(s) */}
-                <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap', justifyContent: 'center', width: '90%', maxWidth: 320 }}>
-                  {(() => {
-                    const fund = (selected.fund || '').toLowerCase();
-                    const tags = [];
-                    if (fund.includes('regatta') || fund.includes('flagship')) tags.push('Early');
-                    if (fund.includes('horizons')) tags.push('Growth');
-                    return tags.length > 0 ? tags.map((tag, idx) => (
-                      <span key={idx} style={{
-                        background: '#F5F6F8',
-                        color: '#1E2332',
-                        borderRadius: 14,
-                        padding: '0 18px',
-                        height: 48,
-                        minWidth: 48,
-                        display: 'flex',
-                        alignItems: 'center',
-                        fontWeight: 500,
-                        fontSize: 'clamp(0.9rem, 2.5vw, 1.08rem)',
-                        letterSpacing: 0.5,
-                        boxShadow: '0 1px 4px 0 rgba(0,0,0,0.07)',
-                        fontFamily: 'var(--font-inter)'
-                      }}>{tag}</span>
-                    )) : null;
-                  })()}
-                  {/* Thesis Bubble */}
-                  {selected.thesis && (
-                    <span style={{
-                      background: '#FFD700',
-                      color: '#23263a',
+                {(() => {
+                  const fund = (selected.fund || '').toLowerCase();
+                  const tags = [];
+                  if (fund.includes('regatta') || fund.includes('flagship')) tags.push('Early');
+                  if (fund.includes('horizons')) tags.push('Growth');
+                  return tags.length > 0 ? tags.map((tag, idx) => (
+                    <span key={idx} style={{
+                      background: '#F5F6F8',
+                      color: '#1E2332',
                       borderRadius: 14,
                       padding: '0 18px',
                       height: 48,
@@ -471,26 +451,47 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
                       letterSpacing: 0.5,
                       boxShadow: '0 1px 4px 0 rgba(0,0,0,0.07)',
                       fontFamily: 'var(--font-inter)'
-                    }}>{selected.thesis}</span>
-                  )}
-                </div>
+                    }}>{tag}</span>
+                  )) : null;
+                })()}
+                {/* Thesis Bubble */}
+                {selected.thesis && (
+                  <span style={{
+                    background: '#FFD700',
+                    color: '#23263a',
+                    borderRadius: 14,
+                    padding: '0 18px',
+                    height: 48,
+                    minWidth: 48,
+                    display: 'flex',
+                    alignItems: 'center',
+                    fontWeight: 500,
+                    fontSize: 'clamp(0.9rem, 2.5vw, 1.08rem)',
+                    letterSpacing: 0.5,
+                    boxShadow: '0 1px 4px 0 rgba(0,0,0,0.07)',
+                    fontFamily: 'var(--font-inter)'
+                  }}>{selected.thesis}</span>
+                )}
               </div>
-              {/* Right: Description */}
-              <div style={{ 
+            </div>
+            {/* Right: Description */}
+            <div
+              className="portfolio-modal-description"
+              style={{
                 flex: 1,
-                padding: 'clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 3vw, 2rem)', 
-                overflowY: 'auto', 
-                color: 'white', 
-                height: '100%', 
-                minWidth: 0, 
-                display: 'flex', 
-                flexDirection: 'column', 
-                justifyContent: 'center', 
-                fontFamily: 'var(--font-inter)' 
-              }}>
-                <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: '700', margin: 0, fontFamily: 'var(--font-inter)' }}>{selected.name}</h2>
-                <div style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.08rem)', lineHeight: 1.7, whiteSpace: 'pre-line', marginTop: 16, fontFamily: 'var(--font-inter)' }}>{selected.description}</div>
-              </div>
+                padding: 'clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 3vw, 2rem)',
+                overflowY: 'auto',
+                color: 'white',
+                height: '100%',
+                minWidth: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                fontFamily: 'var(--font-inter)'
+              }}
+            >
+              <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: '700', margin: 0, fontFamily: 'var(--font-inter)' }}>{selected.name}</h2>
+              <div style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.08rem)', lineHeight: 1.7, whiteSpace: 'pre-line', marginTop: 16, fontFamily: 'var(--font-inter)' }}>{selected.description}</div>
             </div>
             {/* Close button */}
             <button
@@ -540,6 +541,41 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
           .modal-description {
             flex: 1.7 !important;
             height: 100% !important;
+          }
+        }
+        @media (max-width: 768px) {
+          .portfolio-modal-container {
+            flex-direction: column !important;
+            height: auto !important;
+            min-height: auto !important;
+            max-height: 90vh !important;
+          }
+          .portfolio-modal-logo {
+            flex: none !important;
+            width: 100% !important;
+            max-width: 100vw !important;
+            padding: 32px 0 0 0 !important;
+            margin-bottom: 32px !important;
+          }
+          .portfolio-modal-description {
+            flex: none !important;
+            width: 100% !important;
+            padding: 2rem 1rem 2rem 1rem !important;
+          }
+        }
+        @media (min-width: 769px) {
+          .portfolio-modal-container {
+            flex-direction: row !important;
+          }
+          .portfolio-modal-logo {
+            flex: 0 0 45% !important;
+            height: 100% !important;
+            padding: 32px 0 !important;
+          }
+          .portfolio-modal-description {
+            flex: 1 !important;
+            height: 100% !important;
+            padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 3vw, 2rem) !important;
           }
         }
       `}</style>

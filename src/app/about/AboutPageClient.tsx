@@ -570,7 +570,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
               textAlign: 'left',
               marginTop: 0
             }}>
-              How we add value
+              How We Add Value
             </h2>
             <div style={{ color: '#B0B3C7', fontSize: 'clamp(1rem, 3vw, 1.25rem)', lineHeight: 1.6 }}>
               Our team specializes in solving your most pressing challenges. We are passionate about rolling up our sleeves and partnering with founders that have deep financial services experience, audacious goals, differentiated products, and a global mindset.
@@ -635,6 +635,110 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <hr style={{ border: 'none', borderTop: '1px solid #3A4060', margin: '48px 0' }} />
+
+      {/* --- Where We Are Section --- */}
+      <section style={{ marginTop: 20, marginBottom: 20 }}>
+        <h2 style={{
+          color: 'white',
+          fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
+          fontWeight: 600,
+          marginBottom: 24,
+          textAlign: 'left',
+          marginTop: 0
+        }}>
+          Where We Are
+        </h2>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr 1fr',
+            gap: 48,
+            alignItems: 'flex-start',
+            width: '100%',
+          }}
+        >
+          {/* Primary Offices */}
+          <div style={{ minWidth: 200 }}>
+            <h3 style={{ color: '#FFD700', fontWeight: 600, fontSize: '1.15rem', marginBottom: 12 }}>Primary Offices</h3>
+            <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap' }}>
+              {/* San Francisco */}
+              <div style={{ color: 'white', fontSize: '1rem', lineHeight: 1.5, minWidth: 180 }}>
+                <b>San Francisco</b><br />
+                One Sansome Street<br />
+                Suite 3950<br />
+                San Francisco, CA 94104
+              </div>
+              {/* New York City */}
+              <div style={{ color: 'white', fontSize: '1rem', lineHeight: 1.5, minWidth: 180 }}>
+                <b>New York</b><br />
+                155 E 44th Street<br />
+                Floor 33<br />
+                New York, NY 10017
+              </div>
+            </div>
+          </div>
+          {/* Satellite Offices */}
+          <div style={{ minWidth: 200, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifySelf: 'end' }}>
+            <h3 style={{ color: '#FFD700', fontWeight: 600, fontSize: '1.15rem', marginBottom: 12 }}>Satellite Offices</h3>
+            <div style={{ display: 'flex', flexDirection: 'row', gap: 32 }}>
+              {/* Miami */}
+              <div style={{ color: 'white', fontSize: '1rem', lineHeight: 1.5, minWidth: 100 }}>
+                Miami
+              </div>
+              {/* Tokyo */}
+              <div style={{ color: 'white', fontSize: '1rem', lineHeight: 1.5, minWidth: 100 }}>
+                Tokyo
+              </div>
+            </div>
+          </div>
+          {/* Social Logos */}
+          <div style={{ minWidth: 200, maxWidth: 400, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifySelf: 'end' }}>
+            <h3 style={{ color: '#FFD700', fontWeight: 600, fontSize: '1.15rem', marginBottom: 12 }}>Connect with us</h3>
+            <div style={{ display: 'flex', gap: '1.2rem', alignItems: 'center', flexWrap: 'wrap' }}>
+              {/* LinkedIn */}
+              <a href="https://www.linkedin.com/company/fin-capital-vc/" target="_blank" rel="noopener noreferrer" style={{ color: 'white', textDecoration: 'none' }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+              {/* YouTube */}
+              <a href="https://www.youtube.com/channel/UCAkHU3akvs6aIKeWtbWorjg" target="_blank" rel="noopener noreferrer" style={{ color: 'white', textDecoration: 'none' }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </a>
+              {/* X (Twitter) */}
+              <a href="https://x.com/Fin_Capital_VC" target="_blank" rel="noopener noreferrer" style={{ color: 'white', textDecoration: 'none' }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              {/* BlueSky */}
+              <a href="https://bsky.app/profile/fin-capital-vc.bsky.social" target="_blank" rel="noopener noreferrer" style={{ color: 'white', textDecoration: 'none' }}>
+                <img src="/Bluesky_logo.svg" alt="Bluesky Logo" width={28} height={28} style={{ display: 'inline-block', verticalAlign: 'middle' }} />
+              </a>
+            </div>
+            <a href="/contact" style={{ textDecoration: 'none', color: 'inherit', marginTop: '0.75rem' }}>
+              <h3
+                style={{
+                  fontSize: '1rem',
+                  marginBottom: 0,
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  transition: 'opacity 0.2s ease, text-decoration 0.2s ease',
+                  color: 'white'
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.opacity = '0.7';
+                  e.currentTarget.style.textDecoration = 'underline';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.opacity = '1';
+                  e.currentTarget.style.textDecoration = 'none';
+                }}
+              >
+                Contact Us
+              </h3>
+            </a>
           </div>
         </div>
       </section>
@@ -725,6 +829,20 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
         @media (min-width: 1024px) {
           .platform-team-section > div {
             grid-template-columns: 1fr 1.1fr !important;
+          }
+        }
+
+        @media (max-width: 900px) {
+          .about-where-columns {
+            flex-direction: column !important;
+            gap: 32px !important;
+          }
+        }
+
+        @media (max-width: 700px) {
+          .about-where-columns-inner {
+            flex-direction: column !important;
+            gap: 24px !important;
           }
         }
       `}</style>

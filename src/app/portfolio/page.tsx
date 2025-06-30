@@ -23,7 +23,7 @@ const API_URL = 'https://app.lighthouse.ai/api?type=portfolio&key=sT3Qb2Li1ZkMQ3
 
 export default async function PortfolioPage() {
   // Fetch company data from external API
-  const res = await fetch(API_URL, { next: { revalidate: 60 } });
+  const res = await fetch(API_URL, { next: { revalidate: 600 } });
   if (!res.ok) throw new Error('Failed to fetch companies');
   const companiesRaw = await res.json();
 

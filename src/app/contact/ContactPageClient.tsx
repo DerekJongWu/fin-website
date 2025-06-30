@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Header from '@/components/Header';
+import PortfolioHeader from '@/components/PortfolioHeader';
 
 const ContactPageClient: React.FC = () => {
   return (
@@ -11,37 +11,14 @@ const ContactPageClient: React.FC = () => {
       width: '100vw',
       fontFamily: 'var(--font-inter)'
     }}>
-      <Header />
+      <PortfolioHeader />
       <main style={{
         maxWidth: '1200px',
         margin: '0 auto',
-        padding: '125px 2rem 2rem 2rem',
+        padding: '48px 2rem 2rem 2rem',
         minHeight: '80vh',
         fontFamily: 'var(--font-inter)'
       }}>
-        {/* Page Header */}
-        <div style={{
-          textAlign: 'center',
-          marginBottom: '3rem'
-        }}>
-          <h1 style={{
-            fontSize: '2.5rem',
-            fontWeight: '700',
-            color: 'white',
-            marginBottom: '1rem'
-          }}>
-            Contact Us
-          </h1>
-          <p style={{
-            fontSize: '1.1rem',
-            color: '#B0B3C7',
-            maxWidth: '600px',
-            margin: '0 auto'
-          }}>
-            Get in touch with our team or visit one of our offices around the world.
-          </p>
-        </div>
-
         {/* Main Content - Reorganized Layout */}
         <div style={{
           display: 'flex',

@@ -16,7 +16,12 @@ export default function PostPageClient() {
   return (
     <div style={{ display: 'flex', gap: '18px', alignItems: 'center' }}>
       {/* X Icon */}
-      <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(postUrl)}`} target="_blank" rel="noopener noreferrer">
+      <a 
+        href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(postUrl)}`} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        style={{ color: 'inherit', textDecoration: 'none' }}
+      >
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
           <circle cx="16" cy="16" r="16" fill="#fff" />
           <path d="M22.162 8.667L17.07 14.07L22.093 21H18.21L15.07 16.93L11.62 21H9.838L14.93 15.597L9.907 9H13.79L16.93 13.07L20.38 9H22.162ZM18.37 19.13H19.19L13.7 11.77H12.74L18.37 19.13Z" fill="#1E2332"/>
@@ -27,6 +32,7 @@ export default function PostPageClient() {
         href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}`}
         target="_blank"
         rel="noopener noreferrer"
+        style={{ color: 'inherit', textDecoration: 'none' }}
       >
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
           <circle cx="16" cy="16" r="16" fill="#fff" />

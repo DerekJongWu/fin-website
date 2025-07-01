@@ -5,7 +5,9 @@ import { client } from "@/sanity/client";
 import Link from "next/link";
 import PortfolioHeader from "@/components/PortfolioHeader";
 import Footer from "@/components/Footer";
-import SocialIcons from "./SocialIcons";
+import React from "react";
+import PostPageClient from "./PostPageClient";
+
 
 // Define interface for image value in Portable Text
 interface ImageValue {
@@ -97,6 +99,22 @@ const components = {
         </div>
       );
     }
+  },
+  marks: {
+    link: ({ children, value }: { children: React.ReactNode; value?: { href?: string } }) => {
+      const href = value?.href || '';
+      const isExternal = href.startsWith('http');
+      return (
+        <a
+          href={href}
+          target={isExternal ? '_blank' : undefined}
+          rel={isExternal ? 'noopener noreferrer' : undefined}
+          style={{ color: '#FFD700', textDecoration: 'underline' }}
+        >
+          {children}
+        </a>
+      );
+    }
   }
 };
 
@@ -114,16 +132,18 @@ export default async function PostPage({
     <div style={{ background: '#1E2332', minHeight: '100vh', width: '100vw', fontFamily: 'var(--font-inter)' }}>
       <PortfolioHeader />
       <main style={{ maxWidth: 850, margin: '0 auto', padding: '50px 24px 48px 24px', minHeight: '80vh' }}>
-        <Link href="/posts" style={{ 
-          color: '#B0B3C7', 
-          textDecoration: 'none',
-          display: 'inline-block',
-          marginBottom: '2rem',
-          fontSize: '1.1rem',
-          fontFamily: 'var(--font-inter)'
-        }}>
-          ← Back to posts
-        </Link>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+          <Link href="/posts" style={{ 
+            color: '#B0B3C7', 
+            textDecoration: 'none',
+            display: 'inline-block',
+            fontSize: '1.1rem',
+            fontFamily: 'var(--font-inter)'
+          }}>
+            ← Back to posts
+          </Link>
+          <PostPageClient />
+        </div>
         {postImageUrl && (
           <img
             src={postImageUrl}
@@ -171,8 +191,6 @@ export default async function PostPage({
               }}>{cat.toUpperCase()}</span>
             ))}
           </div>
-          {/* Social icons */}
-          <SocialIcons />
         </div>
         <h1 style={{ 
           color: 'white', 
@@ -200,6 +218,18 @@ export default async function PostPage({
         </div>
       </main>
       <Footer />
+      <style>{`
+        .social-icon-btn {
+          color: #191B23;
+          background: #fff;
+          border-radius: 50%;
+          width: 32px;
+          height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      `}</style>
     </div>
   );
 }

@@ -120,20 +120,20 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
           padding: 'clamp(20px, 4vw, 24px) clamp(20px, 4vw, 32px)',
           marginBottom: 32,
           display: 'grid',
-          gridTemplateColumns: '1fr',
-          gap: 'clamp(20px, 4vw, 24px)',
+          gridTemplateColumns: '2fr 1fr 1fr',
+          gap: 'clamp(40px, 6vw, 60px)',
           width: '100%',
           alignItems: 'flex-start',
           fontFamily: 'var(--font-inter)'
         }}>
           {/* Thesis */}
-          <div style={{ minWidth: 220 }}>
+          <div style={{ width: '100%' }}>
             <div style={{ color: '#FFD700', fontWeight: 600, marginBottom: 10, fontFamily: 'var(--font-inter)', fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>Sub-sector</div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'clamp(8px, 2vw, 12px)' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(6px, 1.5vw, 8px) 2px' }}>
               {allTheses.map(thesis => (
                 <label
                   key={thesis}
-                  style={{ display: 'block', color: 'white', marginBottom: 6, cursor: 'pointer', fontFamily: 'var(--font-inter)', fontSize: 'clamp(0.85rem, 2.2vw, 0.95rem)' }}
+                  style={{ display: 'block', color: 'white', marginBottom: 4, cursor: 'pointer', fontFamily: 'var(--font-inter)', fontSize: 'clamp(0.85rem, 2.2vw, 0.95rem)' }}
                 >
                   <input
                     type="checkbox"
@@ -151,42 +151,46 @@ export default function PortfolioClient({ companies }: { companies: Company[] })
             </div>
           </div>
           {/* Stage */}
-          <div style={{ minWidth: 160 }}>
+          <div style={{ width: '100%', marginLeft: '15%' }}>
             <div style={{ color: '#FFD700', fontWeight: 600, marginBottom: 10, fontFamily: 'var(--font-inter)', fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>Stage</div>
-            {allStages.map(stage => (
-              <label key={stage} style={{ display: 'block', color: 'white', marginBottom: 6, cursor: 'pointer', fontFamily: 'var(--font-inter)', fontSize: 'clamp(0.85rem, 2.2vw, 0.95rem)' }}>
-                <input
-                  type="checkbox"
-                  checked={selectedStages.includes(stage)}
-                  onChange={e => setSelectedStages(
-                    e.target.checked
-                      ? [...selectedStages, stage]
-                      : selectedStages.filter(s => s !== stage)
-                  )}
-                  style={{ marginRight: 8 }}
-                />
-                {stage === 'Growth' ? 'Growth/Late' : stage}
-              </label>
-            ))}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(6px, 1.5vw, 8px)' }}>
+              {allStages.map(stage => (
+                <label key={stage} style={{ display: 'block', color: 'white', marginBottom: 4, cursor: 'pointer', fontFamily: 'var(--font-inter)', fontSize: 'clamp(0.85rem, 2.2vw, 0.95rem)' }}>
+                  <input
+                    type="checkbox"
+                    checked={selectedStages.includes(stage)}
+                    onChange={e => setSelectedStages(
+                      e.target.checked
+                        ? [...selectedStages, stage]
+                        : selectedStages.filter(s => s !== stage)
+                    )}
+                    style={{ marginRight: 8 }}
+                  />
+                  {stage === 'Growth' ? 'Growth/Late' : stage}
+                </label>
+              ))}
+            </div>
           </div>
           {/* Status */}
-          <div style={{ minWidth: 160 }}>
+          <div style={{ width: '100%' }}>
             <div style={{ color: '#FFD700', fontWeight: 600, marginBottom: 10, fontFamily: 'var(--font-inter)', fontSize: 'clamp(0.9rem, 2.5vw, 1rem)' }}>Status</div>
-            {allStatuses.map(status => (
-              <label key={status} style={{ display: 'block', color: 'white', marginBottom: 6, cursor: 'pointer', fontFamily: 'var(--font-inter)', fontSize: 'clamp(0.85rem, 2.2vw, 0.95rem)' }}>
-                <input
-                  type="checkbox"
-                  checked={selectedStatuses.includes(status)}
-                  onChange={e => setSelectedStatuses(
-                    e.target.checked
-                      ? [...selectedStatuses, status]
-                      : selectedStatuses.filter(s => s !== status)
-                  )}
-                  style={{ marginRight: 8 }}
-                />
-                {status}
-              </label>
-            ))}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(6px, 1.5vw, 8px)' }}>
+              {allStatuses.map(status => (
+                <label key={status} style={{ display: 'block', color: 'white', marginBottom: 4, cursor: 'pointer', fontFamily: 'var(--font-inter)', fontSize: 'clamp(0.85rem, 2.2vw, 0.95rem)' }}>
+                  <input
+                    type="checkbox"
+                    checked={selectedStatuses.includes(status)}
+                    onChange={e => setSelectedStatuses(
+                      e.target.checked
+                        ? [...selectedStatuses, status]
+                        : selectedStatuses.filter(s => s !== status)
+                    )}
+                    style={{ marginRight: 8 }}
+                  />
+                  {status}
+                </label>
+              ))}
+            </div>
           </div>
         </div>
       )}

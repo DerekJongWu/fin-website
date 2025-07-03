@@ -60,7 +60,7 @@ const PortfolioHeader: React.FC = () => {
             style={{ position: 'relative' }}
           >
             <span className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem', cursor: 'pointer' }}>
-              Career
+              Careers
             </span>
             {isCareerDropdownOpen && (
               <div 
@@ -118,6 +118,17 @@ const PortfolioHeader: React.FC = () => {
             )}
           </li>
           <li><Link href="/posts" className="nav-link" style={{ color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}>News & Insights</Link></li>
+          <li>
+            <a
+              href="https://lighthouse.ai/"
+              className="nav-link"
+              style={{ color: 'white', textDecoration: 'none', fontWeight: '600', fontSize: '1.1rem' }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Lighthouse
+            </a>
+          </li>
         </ul>
       </nav>
 

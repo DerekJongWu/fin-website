@@ -231,9 +231,9 @@ export default function TeamPageClient({ team, advisors }: { team: TeamMember[];
               borderRadius: 24,
               boxShadow: '0 4px 32px 0 rgba(0,0,0,0.25)',
               width: 'min(950px, 96vw)',
-              height: 'min(650px, 87vh)',
-              minHeight: 450,
-              maxHeight: 650,
+              height: 'min(580px, 80vh)',
+              minHeight: 400,
+              maxHeight: 580,
               display: 'flex',
               flexDirection: 'row',
               overflow: 'hidden',
@@ -440,7 +440,7 @@ export default function TeamPageClient({ team, advisors }: { team: TeamMember[];
         @media (min-width: 1201px) {
           .team-modal-container {
             flex-direction: row !important;
-            height: min(650px, 87vh) !important;
+            height: min(580px, 80vh) !important;
           }
           .team-modal-image {
             flex: 0 0 45% !important;

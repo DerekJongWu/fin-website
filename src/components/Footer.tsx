@@ -50,11 +50,11 @@ const Footer: React.FC = () => {
                 onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.textDecoration = 'none'; }}>
                 Portfolio
               </Link>
-              <a href="https://lighthouse.ai/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'white', fontWeight: 600, fontSize: '1rem', transition: 'opacity 0.2s, text-decoration 0.2s' }}
+              <Link href="/posts" style={{ textDecoration: 'none', color: 'white', fontWeight: 600, fontSize: '1rem', transition: 'opacity 0.2s, text-decoration 0.2s' }}
                 onMouseEnter={e => { e.currentTarget.style.opacity = '0.7'; e.currentTarget.style.textDecoration = 'underline'; }}
                 onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.textDecoration = 'none'; }}>
-                Lighthouse
-              </a>
+                News & Insights
+              </Link>
             </nav>
 
             {/* Social Media Icons */}

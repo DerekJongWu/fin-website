@@ -600,11 +600,34 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'center',
-                      cursor: 'pointer',
+                      cursor: feature.title === 'Lighthouse' ? 'pointer' : 'default',
                       transition: 'color 0.2s',
                     }}
                   >
-                    <span>{feature.title}</span>
+                    <span>
+                      {feature.title === 'Lighthouse' ? (
+                        <a
+                          href="https://lighthouse.ai/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            color: 'inherit',
+                            textDecoration: 'none',
+                            transition: 'color 0.2s',
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = '#FFD700';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = 'white';
+                          }}
+                        >
+                          {feature.title}
+                        </a>
+                      ) : (
+                        feature.title
+                      )}
+                    </span>
                     <span style={{ 
                       fontSize: '1.5rem',
                       transition: 'all 0.3s ease',

@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import PortfolioHeader from "@/components/PortfolioHeader";
-import Footer from "@/components/Footer";
 
 // Define the interface for post data
 interface Post {
@@ -21,13 +20,13 @@ const FILTERS = [
   { label: "All", value: "all" },
   { label: "GTM Navigator", value: "GTM Navigator" },
   { label: "Fin News", value: "Fin News" },
-  { label: "Investment Announcement", value: "Investment Announcement" },
+  { label: "Investment Announcements", value: "Investment Announcements" },
 ];
 
 function getCardBg(postType: string) {
   if (postType === "GTM Navigator") return "#2D50A0";
   if (postType === "Fin News") return "#8F8F8F";
-  if (postType === "Investment Announcement") return "#BAA134";
+  if (postType === "Investment Announcements") return "#BAA134";
   return "rgba(255,255,255,0.03)";
 }
 
@@ -231,7 +230,6 @@ export default function PostsPageClient({ posts }: { posts: Post[] }) {
           </div>
         </section>
       </main>
-      <Footer />
 
       <style jsx global>{`
         /* Responsive breakpoints for featured posts quilt pattern */

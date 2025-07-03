@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useMemo } from 'react';
 import PortfolioHeader from '@/components/PortfolioHeader';
-import Footer from '@/components/Footer';
 import imageUrlBuilder from '@sanity/image-url';
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { client } from '@/sanity/client';
@@ -201,7 +200,6 @@ export default function TeamPageClient({ team, advisors }: { team: TeamMember[];
           ))}
         </div>
       </section>
-      <Footer />
       {/* Modal */}
       {selected && (
         <div

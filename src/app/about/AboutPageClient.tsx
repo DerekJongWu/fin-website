@@ -808,7 +808,7 @@ export default function AboutPageClient({ features }: AboutPageClientProps) {
           line-height: 1.4;
           overflow-wrap: break-word;
           word-wrap: break-word;
-          hyphens: auto;
+          hyphens: none;
         }
         .subsector-card:hover .subsector-title {
           opacity: 0;
